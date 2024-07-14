@@ -1,0 +1,51 @@
+--------------------------------------------
+16/05
+[x] Arrumar check wall frog
+[x] Limitar o target
+[x] Adicionar uma area de compensação de dano ao destruir o lanched
+[x] Camera Shake
+[x] Arrumar aranha pra n sair voando se bater nela
+
+17/05
+[x] Spider line render
+[x] Arrumar o ledge detect
+[x] Fazer as particulas do jogador
+
+--------------------------------------------
+22/05
+[x] plataformas atravessaveis (se tiver no ar ela é colider se tiver no chao ela é trigger algo assim)
+[x] trampolis
+
+13/06
+[-] mecanica com arremesso de blocos, e combinação
+/ [x] Preview de objeto 
+/ [x] Pegar objetos alem de tiles
+/ [ ] Colocar objeto no mundo
+
+--------------------------------------------
+
+[] Desenhar um mapa
+[] Começar as dungeons
+[] Começar efeitos de paralaxx do abismo
+
+--------------------------------------------
+
+
+
+
+
+
+
+
+[] Camera melhorias
+https://www.youtube.com/watch?v=9dzBrLUIF8g&ab_channel=SasquatchBStudios
+
+
+[] Iluminação
+https://www.youtube.com/watch?v=1h-hSlffawM&ab_channel=SasquatchBStudios
+
+[] Post Processing
+https://www.youtube.com/watch?v=xxM6AUHqTMA&ab_channel=SasquatchBStudios
+
+[] Ui
+https://www.youtube.com/watch?v=_jtj73lu2Ko&ab_channel=SasquatchBStudios

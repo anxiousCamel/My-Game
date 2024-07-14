@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 696c56122861f6644a76de96e729fa25
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - normalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - blinkMaterial: {fileID: 2100000, guid: 1ac8ec17b455c114abb82c41d6a3f9a0, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
