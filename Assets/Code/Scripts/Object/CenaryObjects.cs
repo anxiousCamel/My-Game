@@ -18,11 +18,9 @@ public class CenaryObjects : MonoBehaviour
 
     public Item itemData;
 
+    public ParticleSystem bushLeafParticle;
     public Vector3 identifyOffSet;
 
-    public List<GameObject> Drops;
-
-    public ParticleSystem bushLeafParticle;
 
 
     void Start()
@@ -121,7 +119,8 @@ public class CenaryObjects : MonoBehaviour
             int quantity = Random.Range(minQuantity, maxQuantity + 1);
             for (int i = 0; i < quantity; i++)
             {
-                Instantiate(itemData.itemPrefab, transform.position, Quaternion.identity);
+                GameObject gameObjectInstantiate = Instantiate(itemData.itemPrefab, transform.position, Quaternion.identity);
+                gameObjectInstantiate.GetComponent<ItemDroped>().item = itemData;
             }
         }
     }
