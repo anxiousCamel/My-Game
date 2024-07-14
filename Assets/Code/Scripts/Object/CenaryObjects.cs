@@ -16,6 +16,8 @@ public class CenaryObjects : MonoBehaviour
         Shake
     };
 
+    public Item itemData;
+
     public Vector3 identifyOffSet;
 
     public List<GameObject> Drops;
@@ -28,7 +30,7 @@ public class CenaryObjects : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
 
-        if(identifyTile == null)
+        if (identifyTile == null)
         {
             identifyTile = IdentifyTileCache.GetIdentifyTile();
         }
@@ -48,9 +50,9 @@ public class CenaryObjects : MonoBehaviour
         }
         #endregion
 
-        if(IdentifyTileCache.canIdentify == true)
+        if (IdentifyTileCache.canIdentify == true)
         {
-            if(!CheckTileBelow())
+            if (!CheckTileBelow())
             {
                 Destroy();
             }
@@ -96,6 +98,8 @@ public class CenaryObjects : MonoBehaviour
     public void Destroy()
     {
         // drop object
+        DropItem();
+        
         // particulas
         bushLeafParticle.Play();
         // destroy
@@ -104,6 +108,24 @@ public class CenaryObjects : MonoBehaviour
 
         IdentifyTileCache.canIdentify = false;
     }
+
+    void DropItem()
+    {
+        int minQuantity = itemData.MinQuantityDrop;
+        int maxQuantity = itemData.MaxQuantityDrop;
+        float probability = itemData.Probability;
+
+        // Lógica para calcular se o item deve ser dropado com base na probabilidade
+        if (Random.value <= probability)
+        {
+            int quantity = Random.Range(minQuantity, maxQuantity + 1);
+            for (int i = 0; i < quantity; i++)
+            {
+                Instantiate(itemData.itemPrefab, transform.position, Quaternion.identity);
+            }
+        }
+    }
+
 
     bool CheckTileBelow()
     {

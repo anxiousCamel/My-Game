@@ -180,8 +180,10 @@ MonoBehaviour:
   anim: {fileID: 0}
   currentState: 0
   Shake: 0
+  itemData: {fileID: 11400000, guid: 6b207f751e58f16349d685377b3ef828, type: 2}
   identifyOffSet: {x: 0, y: 0, z: 0}
-  Drops: []
+  Drops:
+  - {fileID: 4941252043577310863, guid: be7bb59c28a3f8d9aa9b492b41fc76a1, type: 3}
   bushLeafParticle: {fileID: 8303907653296957785}
 --- !u!95 &2843228280713569872
 Animator:
