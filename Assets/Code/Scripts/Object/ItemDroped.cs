@@ -25,17 +25,9 @@ public class ItemDroped : MonoBehaviour
             if (playerInventory != null)
             {
                 // Adicionar o item ao inventário
-                int itemId = GetUniqueItemId(); // Implemente uma função para gerar IDs únicos
-                playerInventory.AddItem(itemId, item);
+                playerInventory.AddItem(item);
                 Destroy(gameObject); // Destruir o objeto após ser coletado
             }
         }
-    }
-
-    // Função para gerar ID único para o item
-    private int GetUniqueItemId()
-    {
-        // Implemente lógica para gerar IDs únicos aqui
-        return Random.Range(1000, 10000); // Exemplo simples de ID único
     }
 }

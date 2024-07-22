@@ -25,8 +25,8 @@ public class PlayerData_Input : MonoBehaviour
         public bool keepPressingObjectInteraction;
         public bool releasedPressingObjectInteraction;
 
-        // Grappling
-        public bool inputGrap;
+        // Inventory
+        public bool inputInventory;
     }
 
     [System.Serializable]
@@ -40,7 +40,7 @@ public class PlayerData_Input : MonoBehaviour
         public float lastInputUpObjectInteraction;
         public float durationInputObjectInteraction;
 
-        // Grappling
-        public float lastInputGrap;
+        // Inventory
+        public float lastInputInventory;
     }
 }

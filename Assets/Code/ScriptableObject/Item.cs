@@ -4,16 +4,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {
-    [Header("Item")]
-    public string itemName;
-    public Sprite icon;
+    private static int idCounter = 0;
+    [ReadOnly] public int id;
     public GameObject itemPrefab;
+    public string itemName;
+    [PreviewSprite] public Sprite icon;
 
-    [TextArea]
-    public string itemDescription= "Ele esqueceu de colocar";
-
-
+    
     [Space(10)]
+    [TextArea]
+    public string description = "Ele esqueceu de colocar";
+
+
+    [Space(20)]
     public int sellValue;
     public bool stackable;
 
@@ -29,5 +32,23 @@ public class Item : ScriptableObject
 
     [Range(0.001f, 1)]
     public float Probability;
+
+    private void OnEnable()
+    {
+        if (id == 0) // Only set the ID if it is not already set
+        {
+            id = GenerateUniqueID();
+        }
+    }
+
+    public int GenerateUniqueID()
+    {
+        return ++idCounter;
+    }
+
+    public void Initialize(int uniqueId)
+    {
+        id = uniqueId;
+    }
 
 }

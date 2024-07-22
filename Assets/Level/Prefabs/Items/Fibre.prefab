@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8987144539388862998}
   - component: {fileID: 662683627385766926}
   - component: {fileID: 4200475511091797685}
-  - component: {fileID: 6308249393613415797}
+  - component: {fileID: 2735797242881392612}
   m_Layer: 0
   m_Name: Fibre
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &662683627385766926
 CircleCollider2D:
@@ -147,9 +147,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
+  m_Offset: {x: -0.012305549, y: 0.44687876}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.62333745
 --- !u!114 &4200475511091797685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,12 +162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a9f2b101060ec88b382f304ff2abf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 6b207f751e58f16349d685377b3ef828, type: 2}
+  impulse: {x: 0, y: 0}
   minImpulse: {x: -200, y: 100}
   maxImpulse: {x: 200, y: 200}
-  impulse: {x: 0, y: 0}
-  item: {fileID: 11400000, guid: 6b207f751e58f16349d685377b3ef828, type: 2}
---- !u!61 &6308249393613415797
-BoxCollider2D:
+--- !u!58 &2735797242881392612
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -198,16 +198,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07923499, y: 0.044839934}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1, y: 0.8333333}
-    newSize: {x: 0.12, y: 0.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.2940165}
   serializedVersion: 2
-  m_Size: {x: 0.3470046, y: 0.08967987}
-  m_EdgeRadius: 0
+  m_Radius: 0.29491878

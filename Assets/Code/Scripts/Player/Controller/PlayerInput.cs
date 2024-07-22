@@ -53,15 +53,15 @@ public class PlayerInput : MonoBehaviour
             Input.Time.lastInputObjectInteraction = Input.CheckInput.inputObjectInteraction ? 0 : Input.Time.lastInputObjectInteraction + 0.1f;
             Input.Time.durationInputObjectInteraction = Input.CheckInput.keepPressingObjectInteraction ? Input.Time.durationInputObjectInteraction + 0.1f : 0;
             #endregion
-
-            #region Grappling
-            Input.CheckInput.inputGrap = UnityEngine.Input.GetButtonDown("Grappling");
-            Input.Time.lastInputGrap = Input.CheckInput.inputGrap ? 0 : Input.Time.lastInputGrap + 0.1f;
-            #endregion
         }
+        #endregion
 
         Input.CheckInput.releasedPressingObjectInteraction = UnityEngine.Input.GetButtonUp("ObjectInteraction");
         Input.Time.lastInputUpObjectInteraction = Input.CheckInput.releasedPressingObjectInteraction ? 0 : Input.Time.lastInputUpObjectInteraction + 0.1f;
+
+        #region Inventory
+            Input.CheckInput.inputInventory = UnityEngine.Input.GetButtonDown("Inventory");
+            Input.Time.lastInputInventory = Input.CheckInput.inputInventory ? 0 : Input.Time.lastInputInventory + 0.1f;
         #endregion
     }
 }
