@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [ReadOnly] public Dictionary<int, InventoryItem> itemsDictionary = new Dictionary<int, InventoryItem>();
+    public Inventory inventoryManager;
 
     // Adicionar item ao inventário
     public void AddItem(Item item)
@@ -21,6 +22,8 @@ public class PlayerInventory : MonoBehaviour
             InventoryItem newItem = new InventoryItem(item, 1); // Inicializar com quantidade 1
             itemsDictionary.Add(item.id, newItem);
         }
+
+        inventoryManager.UpdateInventoryBar();
     }
 
     void Update()
