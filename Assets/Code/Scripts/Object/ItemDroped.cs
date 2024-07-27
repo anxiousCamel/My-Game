@@ -16,7 +16,7 @@ public class ItemDroped : MonoBehaviour
         impulse = new Vector2(Body.velocity.x + Random.Range(minImpulse.x, maxImpulse.x), Body.velocity.y + Random.Range(minImpulse.y, maxImpulse.y));
         Body.AddForce(impulse);
     }
-
+/*
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -29,5 +29,5 @@ public class ItemDroped : MonoBehaviour
                 Destroy(gameObject); // Destruir o objeto após ser coletado
             }
         }
-    }
+    }*/
 }

@@ -8,6 +8,7 @@ TagManager:
   - Predator
   - Launched
   - Platform
+  - InventorySlot
   layers:
   - Default
   - TransparentFX
