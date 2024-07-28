@@ -2,15 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiInventoryPage : MonoBehaviour
 {
+    [Header("Inventory")]
     [SerializeField] private UiInventoryItem itemPrefab;
     [SerializeField] private RectTransform contentPanelInventory;
     [SerializeField] private RectTransform contentPanelBar;
 
     List<UiInventoryItem> listOfUiItens = new List<UiInventoryItem>();
     public GameObject inventoryPagePrefab;
+
+
+    [Header("Description")]
+    [SerializeField] UiInventoryDescription itemDescription;
+
+    private void Awake() 
+    {
+        Hide();
+        itemDescription.ResetDescription();
+    }
+
+    [Header("Temporary Item")]
+    public Sprite image;
+    public int quantity;
+    public string title, type, description;
+
 
 
     public void InitializeInventoryUi(int inventorySize, int barSize)
@@ -58,12 +76,16 @@ public class UiInventoryPage : MonoBehaviour
 
     private void HandleItemSelection(UiInventoryItem obj)
     {
-        Debug.Log(obj.name);
+        itemDescription.SetDescription(title, type, description);
+        listOfUiItens[0].Select();
     }
 
     public void Show()
     {
         inventoryPagePrefab.SetActive(true);
+        itemDescription.ResetDescription();
+
+        listOfUiItens[0].SetData(image,quantity);
     }
 
     public void Hide()

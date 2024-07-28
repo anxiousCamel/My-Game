@@ -39,10 +39,10 @@ public class UiInventoryItem : MonoBehaviour
         borderImage.enabled = false;
     }
 
-    public void SetData(Image sprite, int quantity)
+    public void SetData(Sprite sprite, int quantity)
     {
         this.itemImage.gameObject.SetActive(true);
-        this.itemImage = sprite;
+        this.itemImage.sprite = sprite;
         this.quantityText.text = quantity + "";
     }
 
@@ -70,7 +70,7 @@ public class UiInventoryItem : MonoBehaviour
 
     public void OnPointerClick(BaseEventData data)
     {
-        if (empty) { return; }
+        //if (empty) { return; }
 
         PointerEventData pointerData = (PointerEventData)data;
         if (pointerData.button == PointerEventData.InputButton.Right)
