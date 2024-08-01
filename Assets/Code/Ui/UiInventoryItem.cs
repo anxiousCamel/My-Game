@@ -52,11 +52,11 @@ public class UiInventoryItem : MonoBehaviour
     }
 
     public void OnBeginDrag()
-    {
-        if (empty) { return; }
-        else { OnItemBegginDrag?.Invoke(this); }
+    //{
+        //if (empty) { return; }
+        /*else*/ { OnItemBegginDrag?.Invoke(this); }
 
-    }
+    //}
 
     public void OnDrop()
     {

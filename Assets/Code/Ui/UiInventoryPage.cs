@@ -18,9 +18,13 @@ public class UiInventoryPage : MonoBehaviour
     [Header("Description")]
     [SerializeField] UiInventoryDescription itemDescription;
 
+    [Header("Mouse Follower")]
+    [SerializeField] MouseFollower mouseFollower;
+
     private void Awake() 
     {
         Hide();
+        mouseFollower.Toggle(false);
         itemDescription.ResetDescription();
     }
 
@@ -61,7 +65,7 @@ public class UiInventoryPage : MonoBehaviour
 
     private void HandleEndDrag(UiInventoryItem obj)
     {
-        throw new NotImplementedException();
+        mouseFollower.Toggle(false);
     }
 
     private void HandleSwag(UiInventoryItem obj)
@@ -71,7 +75,8 @@ public class UiInventoryPage : MonoBehaviour
 
     private void HandleBeginDrag(UiInventoryItem obj)
     {
-        throw new NotImplementedException();
+        mouseFollower.Toggle(true);
+        mouseFollower.SetData(image,quantity);
     }
 
     private void HandleItemSelection(UiInventoryItem obj)
