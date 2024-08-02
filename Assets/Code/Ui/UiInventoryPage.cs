@@ -28,12 +28,11 @@ public class UiInventoryPage : MonoBehaviour
         itemDescription.ResetDescription();
     }
 
-    [Header("Temporary Item")]
-    public Sprite image;
-    public int quantity;
-    public string title, type, description;
+    private int currentlyDraggedItemIndex = -1;
 
+    public event Action<int> OnDescriptionRequested, OnItemActionRequested, OnStartDragging;
 
+    public event Action<int, int> OnSwapItems;
 
     public void InitializeInventoryUi(int inventorySize, int barSize)
     {
@@ -55,46 +54,105 @@ public class UiInventoryPage : MonoBehaviour
             UiInventoryItem uiItem =  Instantiate(itemPrefab, Vector3.zero, Quaternion.identity, contentPanelBar);
             uiItem.transform.SetParent(contentPanelBar);
             listOfUiItens.Add(uiItem);
+
+            uiItem.OnItemClick += HandleItemSelection;
+            uiItem.OnItemBegginDrag += HandleBeginDrag;
+            uiItem.OnItemDroppedOn += HandleSwag;
+            uiItem.OnItemEndedDrag += HandleEndDrag;
+            uiItem.OnRightClick += HandleRightClick;
         }
     }
 
-    private void HandleRightClick(UiInventoryItem obj)
+    public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity)
+    {
+        if(listOfUiItens.Count >= itemIndex)
+        {
+            listOfUiItens[itemIndex].SetData(itemImage, itemQuantity);
+        }
+    }
+
+    private void HandleRightClick(UiInventoryItem inventoryItemUI)
     {
         throw new NotImplementedException();
     }
 
-    private void HandleEndDrag(UiInventoryItem obj)
+    private void HandleEndDrag(UiInventoryItem inventoryItemUI)
+    {
+        ResetDraggtedItem();
+    }
+
+    private void HandleSwag(UiInventoryItem inventoryItemUI)
+    {
+        int index = listOfUiItens.IndexOf(inventoryItemUI);
+        if (index == -1)
+        {
+            return;
+        }
+
+       OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
+
+    }
+
+    private void ResetDraggtedItem()
     {
         mouseFollower.Toggle(false);
+        currentlyDraggedItemIndex = -1;
     }
 
-    private void HandleSwag(UiInventoryItem obj)
+    private void HandleBeginDrag(UiInventoryItem inventoryItemUI)
     {
-        throw new NotImplementedException();
+        int index =  listOfUiItens.IndexOf(inventoryItemUI);
+        if  (index == -1)
+        {
+            return;
+        }
+
+        currentlyDraggedItemIndex = index;
+        HandleItemSelection(inventoryItemUI);
+        OnStartDragging?.Invoke(index);
     }
 
-    private void HandleBeginDrag(UiInventoryItem obj)
+    public void CreateDraggedItem(Sprite sprite, int quantity)
     {
         mouseFollower.Toggle(true);
-        mouseFollower.SetData(image,quantity);
+        mouseFollower.SetData(sprite, quantity);
     }
 
-    private void HandleItemSelection(UiInventoryItem obj)
+    private void HandleItemSelection(UiInventoryItem inventoryItemUI)
     {
-        itemDescription.SetDescription(title, type, description);
-        listOfUiItens[0].Select();
+       int index =  listOfUiItens.IndexOf(inventoryItemUI);
+       if(index == -1)
+       {
+        return ;
+       }
+
+       OnDescriptionRequested?.Invoke(index);
     }
 
+    // lista os itens no inventario
     public void Show()
     {
         inventoryPagePrefab.SetActive(true);
-        itemDescription.ResetDescription();
+        ResetSelection();
+    }
 
-        listOfUiItens[0].SetData(image,quantity);
+    private void ResetSelection()
+    {
+        itemDescription.ResetDescription();
+        DeselectAllItems();
+    }
+
+    private void DeselectAllItems()
+    {
+        foreach(UiInventoryItem item in listOfUiItens)
+        {
+            item.Deselect();
+        }
     }
 
     public void Hide()
     {
         inventoryPagePrefab.SetActive(false);
+        ResetDraggtedItem();
     }
 }

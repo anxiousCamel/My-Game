@@ -5869,6 +5869,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4069061769657712226, guid: 6ad64a7b9263dbbcba5f5d5c7e64d566, type: 3}
+      propertyPath: m_Alpha
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5619605015830357622, guid: 6ad64a7b9263dbbcba5f5d5c7e64d566, type: 3}
       propertyPath: m_Name
       value: MouseFollower
@@ -49403,6 +49407,10 @@ PrefabInstance:
       propertyPath: title
       value: Fibre
       objectReference: {fileID: 0}
+    - target: {fileID: 9154668525607662986, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      propertyPath: image2
+      value: 
+      objectReference: {fileID: 1930019711207455971, guid: cbd0d17c1a2b3034d91ce4b580f35ed8, type: 3}
     - target: {fileID: 9154668525607662986, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
       propertyPath: quantity
       value: 15
