@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
-  <Name>k__BackingField: Fibre
-  <Description>k__BackingField: Uma fibra bem verde.
+  <Name>k__BackingField: Fly
+  <Description>k__BackingField: Uma mosca, parece morta.
   <ItemImage>k__BackingField: {fileID: 799007430587384600, guid: acd2bf348429f9f4385b8ce8a5782de1, type: 3}
