@@ -15,5 +15,6 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Fibre
+  <Type>k__BackingField: Comum
   <Description>k__BackingField: Uma fibra bem verde.
   <ItemImage>k__BackingField: {fileID: 7066825956324017769, guid: ad9adaa78f1b33c9f860900ed83fc8b7, type: 3}

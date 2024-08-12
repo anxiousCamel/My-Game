@@ -21,7 +21,7 @@ public class UiInventoryPage : MonoBehaviour
     [Header("Mouse Follower")]
     [SerializeField] MouseFollower mouseFollower;
 
-    private void Awake() 
+    private void Awake()
     {
         Hide();
         mouseFollower.Toggle(false);
@@ -34,27 +34,18 @@ public class UiInventoryPage : MonoBehaviour
 
     public event Action<int, int> OnSwapItems;
 
-    public void InitializeInventoryUi(int inventorySize, int barSize)
+    public void InitializeInventoryUi(int inventorySize)
     {
         for (int i = 0; i < inventorySize; i++)
         {
-            UiInventoryItem uiItem =  Instantiate(itemPrefab, Vector3.zero, Quaternion.identity, contentPanelInventory);
-            uiItem.transform.SetParent(contentPanelInventory);
+            UiInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
+
+            // Usa operador ternário para definir o pai (parent) do item
+            uiItem.transform.SetParent(i < 9 ? contentPanelBar : contentPanelInventory);
+
             listOfUiItens.Add(uiItem);
 
-            uiItem.OnItemClick += HandleItemSelection;
-            uiItem.OnItemBegginDrag += HandleBeginDrag;
-            uiItem.OnItemDroppedOn += HandleSwag;
-            uiItem.OnItemEndedDrag += HandleEndDrag;
-            uiItem.OnRightClick += HandleRightClick;
-        }
-
-        for (int i = 0; i < barSize; i++)
-        {
-            UiInventoryItem uiItem =  Instantiate(itemPrefab, Vector3.zero, Quaternion.identity, contentPanelBar);
-            uiItem.transform.SetParent(contentPanelBar);
-            listOfUiItens.Add(uiItem);
-
+            // Configura os eventos para o item
             uiItem.OnItemClick += HandleItemSelection;
             uiItem.OnItemBegginDrag += HandleBeginDrag;
             uiItem.OnItemDroppedOn += HandleSwag;
@@ -65,7 +56,7 @@ public class UiInventoryPage : MonoBehaviour
 
     public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity)
     {
-        if(listOfUiItens.Count >= itemIndex)
+        if (listOfUiItens.Count >= itemIndex)
         {
             listOfUiItens[itemIndex].SetData(itemImage, itemQuantity);
         }
@@ -89,7 +80,7 @@ public class UiInventoryPage : MonoBehaviour
             return;
         }
 
-       OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
+        OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
 
     }
 
@@ -101,8 +92,8 @@ public class UiInventoryPage : MonoBehaviour
 
     private void HandleBeginDrag(UiInventoryItem inventoryItemUI)
     {
-        int index =  listOfUiItens.IndexOf(inventoryItemUI);
-        if  (index == -1)
+        int index = listOfUiItens.IndexOf(inventoryItemUI);
+        if (index == -1)
         {
             return;
         }
@@ -120,13 +111,13 @@ public class UiInventoryPage : MonoBehaviour
 
     private void HandleItemSelection(UiInventoryItem inventoryItemUI)
     {
-       int index =  listOfUiItens.IndexOf(inventoryItemUI);
-       if(index == -1)
-       {
-        return ;
-       }
+        int index = listOfUiItens.IndexOf(inventoryItemUI);
+        if (index == -1)
+        {
+            return;
+        }
 
-       OnDescriptionRequested?.Invoke(index);
+        OnDescriptionRequested?.Invoke(index);
     }
 
     // lista os itens no inventario
@@ -136,7 +127,7 @@ public class UiInventoryPage : MonoBehaviour
         ResetSelection();
     }
 
-    private void ResetSelection()
+    public void ResetSelection()
     {
         itemDescription.ResetDescription();
         DeselectAllItems();
@@ -144,7 +135,7 @@ public class UiInventoryPage : MonoBehaviour
 
     private void DeselectAllItems()
     {
-        foreach(UiInventoryItem item in listOfUiItens)
+        foreach (UiInventoryItem item in listOfUiItens)
         {
             item.Deselect();
         }
@@ -154,5 +145,12 @@ public class UiInventoryPage : MonoBehaviour
     {
         inventoryPagePrefab.SetActive(false);
         ResetDraggtedItem();
+    }
+
+    internal void UpdateDescription(int itemIndex, string name, string type, string description)
+    {
+        itemDescription.SetDescription(name, type, description);
+        DeselectAllItems();
+        listOfUiItens[itemIndex].Select();
     }
 }
