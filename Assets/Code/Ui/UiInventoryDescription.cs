@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UiInventoryDescription : MonoBehaviour
+namespace Inventory.UI
 {
-    [SerializeField] private TextMeshProUGUI title;
-    [SerializeField] private TextMeshProUGUI type;
-    [SerializeField] private TextMeshProUGUI description;
-
-    private void Awake() 
+    public class UiInventoryDescription : MonoBehaviour
     {
-        ResetDescription();
-    }
+        [SerializeField] private TextMeshProUGUI title;
+        [SerializeField] private TextMeshProUGUI type;
+        [SerializeField] private TextMeshProUGUI description;
 
-    public void ResetDescription()
-    {
-        this.title.text = "";
-        this.type.text = "";
-        this.description.text = "";
-    }
+        private void Awake()
+        {
+            ResetDescription();
+        }
 
-    public void SetDescription(string name, string type, string description)
-    {
-        this.title.text = name;
-        this.type.text = type;
-        this.description.text = description;
+        public void ResetDescription()
+        {
+            this.title.text = "";
+            this.type.text = "";
+            this.description.text = "";
+        }
+
+        public void SetDescription(string name, string type, string description)
+        {
+            this.title.text = name;
+            this.type.text = type;
+            this.description.text = description;
+        }
     }
 }
