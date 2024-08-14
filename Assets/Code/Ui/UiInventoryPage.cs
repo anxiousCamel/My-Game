@@ -154,5 +154,14 @@ namespace Inventory.UI
             DeselectAllItems();
             listOfUiItens[itemIndex].Select();
         }
+
+        internal void ResetAllItems()
+        {
+            foreach(var item in listOfUiItens)
+            {
+                item.ResetData();
+                item.Deselect();
+            }
+        }
     }
 }
