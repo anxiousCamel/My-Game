@@ -16,15 +16,15 @@ namespace Inventory
 
         private void Start()
         {
-            PrepareUi();
             PrepareInventoryData();
+            PrepareUi();
         }
 
         private void PrepareInventoryData()
         {
             inventoryData.Initialize();
             inventoryData.OnInventoryUpdated += UpdateInventoryUI;
-            
+
             foreach (InventoryItem item in initialItems)
             {
                 if(item.isEmpty)

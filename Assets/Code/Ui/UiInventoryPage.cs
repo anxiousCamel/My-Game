@@ -82,7 +82,7 @@ namespace Inventory.UI
             }
 
             OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
-
+            HandleItemSelection(inventoryItemUI);
         }
 
         private void ResetDraggtedItem()

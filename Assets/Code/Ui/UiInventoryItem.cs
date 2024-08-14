@@ -34,6 +34,7 @@ namespace Inventory.UI
         public void ResetData()
         {
             this.itemImage.gameObject.SetActive(false);
+            this.quantityText.text = "";
             this.empty = true;
         }
         public void Deselect()
@@ -46,6 +47,7 @@ namespace Inventory.UI
             this.itemImage.gameObject.SetActive(true);
             this.itemImage.sprite = sprite;
             this.quantityText.text = quantity + "";
+            empty = false;
         }
 
         public void Select()

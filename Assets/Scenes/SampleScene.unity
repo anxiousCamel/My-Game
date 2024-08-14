@@ -11465,8 +11465,92 @@ MonoBehaviour:
     quantity: 39
   - item: {fileID: 0}
     quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
   - item: {fileID: 11400000, guid: 45324d39eae0a715388fa18f66e9d188, type: 2}
-    quantity: 68
+    quantity: 26
+  - item: {fileID: 11400000, guid: 2106f065447aa3d848132cd57a1d1dc5, type: 2}
+    quantity: 26
+  - item: {fileID: 11400000, guid: 2106f065447aa3d848132cd57a1d1dc5, type: 2}
+    quantity: 26
+  - item: {fileID: 11400000, guid: 2106f065447aa3d848132cd57a1d1dc5, type: 2}
+    quantity: 26
+  - item: {fileID: 11400000, guid: 2106f065447aa3d848132cd57a1d1dc5, type: 2}
+    quantity: 26
+  - item: {fileID: 11400000, guid: 2106f065447aa3d848132cd57a1d1dc5, type: 2}
+    quantity: 26
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 11400000, guid: 2106f065447aa3d848132cd57a1d1dc5, type: 2}
+    quantity: 2
 --- !u!1 &1332210032
 GameObject:
   m_ObjectHideFlags: 3
@@ -49430,10 +49514,6 @@ PrefabInstance:
       propertyPath: mouseFollower
       value: 
       objectReference: {fileID: 735157975}
-    - target: {fileID: 9154668525607662986, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
-      propertyPath: itemDescription
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8775742371238790356, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
