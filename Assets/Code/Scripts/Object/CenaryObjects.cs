@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Inventory.Model;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class CenaryObjects : MonoBehaviour
 {
+    [field: SerializeField]
+    public ItemSO InventoryItem { get; private set; }
     [ReadOnly] public IdentifyTile identifyTile;
     [ReadOnly] public BoxCollider2D col;
     [ReadOnly] public Animator anim;
@@ -15,8 +18,6 @@ public class CenaryObjects : MonoBehaviour
         Idle,
         Shake
     };
-
-    public Item itemData;
 
     public ParticleSystem bushLeafParticle;
     public Vector3 identifyOffSet;
@@ -96,7 +97,7 @@ public class CenaryObjects : MonoBehaviour
     public void Destroy()
     {
         // drop object
-        DropItem();
+       DropItem();
         
         // particulas
         bushLeafParticle.Play();
@@ -109,9 +110,9 @@ public class CenaryObjects : MonoBehaviour
 
     void DropItem()
     {
-        int minQuantity = itemData.MinQuantityDrop;
-        int maxQuantity = itemData.MaxQuantityDrop;
-        float probability = itemData.Probability;
+        int minQuantity = InventoryItem.MinQuantityDrop;
+        int maxQuantity = InventoryItem.MaxQuantityDrop;
+        float probability = InventoryItem.ProbabilityDrop;
 
         // Lógica para calcular se o item deve ser dropado com base na probabilidade
         if (Random.value <= probability)
@@ -119,8 +120,8 @@ public class CenaryObjects : MonoBehaviour
             int quantity = Random.Range(minQuantity, maxQuantity + 1);
             for (int i = 0; i < quantity; i++)
             {
-                GameObject gameObjectInstantiate = Instantiate(itemData.itemPrefab, transform.position, Quaternion.identity);
-                gameObjectInstantiate.GetComponent<ItemDroped>().item = itemData;
+                GameObject gameObjectInstantiate = Instantiate(InventoryItem.Prefab, transform.position, Quaternion.identity);
+                //gameObjectInstantiate.GetComponent<ItemDroped>().item = InventoryItem;
             }
         }
     }

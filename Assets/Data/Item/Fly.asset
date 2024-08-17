@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1220c6e40d32a4f659dde066ff1e58c1, type: 3}
   m_Name: Fly
   m_EditorClassIdentifier: 
-  <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 99
-  <Name>k__BackingField: Fly
-  <Type>k__BackingField: Inseto
-  <Description>k__BackingField: Uma mosca, parece morta.
-  <ItemImage>k__BackingField: {fileID: 799007430587384600, guid: acd2bf348429f9f4385b8ce8a5782de1, type: 3}
+  isStackable: 1
+  itemImage: {fileID: 799007430587384600, guid: acd2bf348429f9f4385b8ce8a5782de1, type: 3}
+  maxStackSize: 99
+  itemName: Mosca
+  type: Comun
+  description: "Musca domestica, conhecida pelos nomes comuns de mosca-dom\xE9stica,
+    mosca-de-casa, \xE9 uma esp\xE9cie de d\xEDptero braqu\xEDcero da fam\xEDlia
+    Muscidae. \xC9 um dos insectos mais comuns e uma presen\xE7a habitual na maioria
+    dos climas do abismo. "
+  prefab: {fileID: 0}
+  minQuantityDrop: 1
+  maxQuantityDrop: 1
+  probabilityDrop: 0.5

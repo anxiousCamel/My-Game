@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1220c6e40d32a4f659dde066ff1e58c1, type: 3}
   m_Name: Fibre
   m_EditorClassIdentifier: 
-  <IsStackable>k__BackingField: 1
-  <MaxStackSize>k__BackingField: 99
-  <Name>k__BackingField: Fibre
-  <Type>k__BackingField: Comum
-  <Description>k__BackingField: Uma fibra bem verde.
-  <ItemImage>k__BackingField: {fileID: 7066825956324017769, guid: ad9adaa78f1b33c9f860900ed83fc8b7, type: 3}
+  isStackable: 1
+  itemImage: {fileID: 7066825956324017769, guid: ad9adaa78f1b33c9f860900ed83fc8b7, type: 3}
+  maxStackSize: 99
+  itemName: Fibre
+  type: Comun
+  description: "S\xE3o mat\xE9rias-primas moles e flex\xEDveis e que, quando entrela\xE7adas,
+    possuem diversos usos utilit\xE1rios."
+  prefab: {fileID: 4941252043577310863, guid: be7bb59c28a3f8d9aa9b492b41fc76a1, type: 3}
+  minQuantityDrop: 1
+  maxQuantityDrop: 3
+  probabilityDrop: 100

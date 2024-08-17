@@ -175,16 +175,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ec1ec69199da8a5aafdb25cb5f69a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 45324d39eae0a715388fa18f66e9d188, type: 2}
   identifyTile: {fileID: 0}
   col: {fileID: 0}
   anim: {fileID: 0}
   currentState: 0
   Shake: 0
-  itemData: {fileID: 11400000, guid: 6b207f751e58f16349d685377b3ef828, type: 2}
-  identifyOffSet: {x: 0, y: 0, z: 0}
-  Drops:
-  - {fileID: 4941252043577310863, guid: be7bb59c28a3f8d9aa9b492b41fc76a1, type: 3}
   bushLeafParticle: {fileID: 8303907653296957785}
+  identifyOffSet: {x: 0, y: 0, z: 0}
 --- !u!95 &2843228280713569872
 Animator:
   serializedVersion: 5
