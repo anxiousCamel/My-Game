@@ -16,8 +16,8 @@ namespace Inventory
 
         private void Start()
         {
-            PrepareInventoryData();
             PrepareUi();
+            PrepareInventoryData();
         }
 
         private void PrepareInventoryData()
