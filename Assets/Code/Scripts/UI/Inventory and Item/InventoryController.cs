@@ -25,19 +25,21 @@ namespace Inventory
             inventoryData.Initialize();
             inventoryData.OnInventoryUpdated += UpdateInventoryUI;
 
-            foreach (InventoryItem item in initialItems)
+            for (int i = 0; i < initialItems.Count; i++)
             {
-                if(item.isEmpty)
-                {
-                    continue;
-                }
+                InventoryItem item = initialItems[i];
 
+                if (item.isEmpty)
+                {
+                    // Adiciona um espaço vazio para manter a posição
+                    inventoryData.SetItemAt(i, InventoryItem.GetEmptyItem());
+                }
                 else
                 {
-                    inventoryData.AddItem(item);
+                    // Adiciona o item na posição correspondente, sem empilhar
+                    inventoryData.SetItemAt(i, item);
                 }
             }
-           
         }
 
         private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
@@ -63,10 +65,28 @@ namespace Inventory
 
         }
 
+        private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
+        {
+            InventoryItem item1 = inventoryData.GetItemAt(itemIndex_1);
+            InventoryItem item2 = inventoryData.GetItemAt(itemIndex_2);
+
+            // Verifica se os itens são do mesmo tipo e são empilháveis
+            if (item1.item.ID == item2.item.ID && item1.item.IsStackable)
+            {
+                // Tenta combinar os itens
+                inventoryData.CombineItems(itemIndex_1, itemIndex_2, item1, item2);
+            }
+            else
+            {
+                // Se não puderem ser combinados, troca os itens normalmente
+                inventoryData.SwapItems(itemIndex_1, itemIndex_2);
+            }
+        }
+
         private void HandleDragging(int itemIndex)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
-            if(inventoryItem.isEmpty)
+            if (inventoryItem.isEmpty)
             {
                 return;
             }
@@ -74,12 +94,6 @@ namespace Inventory
             {
                 inventoryUi.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
             }
-        }
-
-        private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
-        {
-            inventoryData.SwapItems(itemIndex_1, itemIndex_2);
-           
         }
 
         private void HandleDescriptionRequest(int itemIndex)
