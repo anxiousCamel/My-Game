@@ -71,7 +71,7 @@ namespace Inventory
             InventoryItem item2 = inventoryData.GetItemAt(itemIndex_2);
 
             // Verifica se os itens são do mesmo tipo e são empilháveis
-            if (item1.item.ID == item2.item.ID && item1.item.IsStackable)
+            if (!item1.isEmpty && !item2.isEmpty && item1.item.ID == item2.item.ID && item1.item.IsStackable)
             {
                 // Tenta combinar os itens
                 inventoryData.CombineItems(itemIndex_1, itemIndex_2, item1, item2);

@@ -5345,6 +5345,24 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &386004773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1018563656356409809, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+  m_PrefabInstance: {fileID: 1777021544199998237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &386004778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386004773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee8d271e5db31b5bb1ed91dd2cc916f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!1 &393827623
 GameObject:
   m_ObjectHideFlags: 0
@@ -49403,6 +49421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 1773486086486019301, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.171875
+      objectReference: {fileID: 0}
     - target: {fileID: 2905138950683893583, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -49484,16 +49506,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3585025315829311349, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585025315829311349, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585025315829311349, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585025315829311349, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3585025315829311349, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -57.06299
+      value: 283.937
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585025315829311349, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150.2
       objectReference: {fileID: 0}
     - target: {fileID: 3585025315829311349, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -118.793915
+      value: -141.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027005813392359093, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 162.03809
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534136710254034625, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -97.12891
       objectReference: {fileID: 0}
     - target: {fileID: 7858068392079056683, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
       propertyPath: m_IsActive
@@ -49520,11 +49566,6 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9154668525607662986, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
-      propertyPath: description
-      value: Soft and flexible raw materials that, when intertwined, have several
-        imported uses.
-      objectReference: {fileID: 0}
-    - target: {fileID: 9154668525607662986, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
       propertyPath: mouseFollower
       value: 
       objectReference: {fileID: 735157975}
@@ -49532,7 +49573,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8775742371238790356, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1018563656356409809, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 386004778}
   m_SourcePrefab: {fileID: 100100000, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
 --- !u!1001 &5839462073927228767
 PrefabInstance:

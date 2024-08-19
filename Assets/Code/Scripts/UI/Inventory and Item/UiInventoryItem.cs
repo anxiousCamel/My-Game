@@ -8,19 +8,21 @@ using UnityEngine.EventSystems;
 
 namespace Inventory.UI
 {
-    public class UiInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler
+    public class UiInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Image itemImage;
         [SerializeField] private TextMeshProUGUI quantityText;
 
         [SerializeField] private Image borderImage;
 
-        public event Action<UiInventoryItem>
-            OnItemClick,
-            OnItemDroppedOn,
-            OnItemBegginDrag,
-            OnItemEndedDrag,
-            OnRightClick;
+        public event Action<UiInventoryItem> 
+        OnItemClick, 
+        OnItemDroppedOn, 
+        OnItemBegginDrag, 
+        OnItemEndedDrag, 
+        OnRightClick, 
+        OnItemHovered, 
+        OnItemHoverExit;
 
         private bool empty = true;
 
@@ -91,6 +93,17 @@ namespace Inventory.UI
         public void OnDrag(PointerEventData eventData)
         {
 
+        }
+
+        // Adicionando os eventos para quando o mouse entra e sai do slot
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            OnItemHovered?.Invoke(this);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            OnItemHoverExit?.Invoke(this);
         }
 
     }

@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ed9bc991d9c75de8620bbf959b13fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: {fileID: 459967506545024999}
   itemPrefab: {fileID: 995819509818222794, guid: 685a2a4ba3d01fdd6ad2a010c9c11387, type: 3}
   contentPanelInventory: {fileID: 8378177254766515958}
   contentPanelBar: {fileID: 3233764026044003598}

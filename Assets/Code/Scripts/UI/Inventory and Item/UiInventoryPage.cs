@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace Inventory.UI
 {
     public class UiInventoryPage : MonoBehaviour
     {
+         [SerializeField] private UiInventoryDescription description;
+
         [Header("Inventory")]
         [SerializeField] private UiInventoryItem itemPrefab;
         [SerializeField] private RectTransform contentPanelInventory;
@@ -52,6 +55,8 @@ namespace Inventory.UI
                 uiItem.OnItemDroppedOn += HandleSwag;
                 uiItem.OnItemEndedDrag += HandleEndDrag;
                 uiItem.OnRightClick += HandleRightClick;
+                uiItem.OnItemHovered += HandleItemHovered;
+                uiItem.OnItemHoverExit += HandleItemHoverExit;
             }
         }
 
@@ -146,6 +151,21 @@ namespace Inventory.UI
         {
             inventoryPagePrefab.SetActive(false);
             ResetDraggtedItem();
+            description.ResetDescription();
+        }
+
+        private void HandleItemHovered(UiInventoryItem inventoryItemUI)
+        {
+            int index = listOfUIItems.IndexOf(inventoryItemUI);
+            if (index != -1)
+            {
+                OnDescriptionRequested?.Invoke(index);
+            }
+        }
+
+        private void HandleItemHoverExit(UiInventoryItem inventoryItemUI)
+        {
+            itemDescription.ResetDescription();
         }
 
         internal void UpdateDescription(int itemIndex, string name, string type, string description)
