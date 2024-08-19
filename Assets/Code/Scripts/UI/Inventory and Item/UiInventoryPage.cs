@@ -8,7 +8,8 @@ namespace Inventory.UI
 {
     public class UiInventoryPage : MonoBehaviour
     {
-         [SerializeField] private UiInventoryDescription description;
+        private bool isInventoryOpen = false;
+        [SerializeField] private UiInventoryDescription description;
 
         [Header("Inventory")]
         [SerializeField] private UiInventoryItem itemPrefab;
@@ -123,7 +124,7 @@ namespace Inventory.UI
                 return;
             }
 
-            OnDescriptionRequested?.Invoke(index);
+            //OnDescriptionRequested?.Invoke(index);
         }
 
         // lista os itens no inventario
@@ -131,6 +132,7 @@ namespace Inventory.UI
         {
             inventoryPagePrefab.SetActive(true);
             ResetSelection();
+            isInventoryOpen = true;
         }
 
         public void ResetSelection()
@@ -150,16 +152,21 @@ namespace Inventory.UI
         public void Hide()
         {
             inventoryPagePrefab.SetActive(false);
-            ResetDraggtedItem();
+            DeselectAllItems();
             description.ResetDescription();
+            isInventoryOpen = false;
+            ResetDraggtedItem();
         }
 
         private void HandleItemHovered(UiInventoryItem inventoryItemUI)
         {
-            int index = listOfUIItems.IndexOf(inventoryItemUI);
-            if (index != -1)
+            if(isInventoryOpen)
             {
-                OnDescriptionRequested?.Invoke(index);
+                int index = listOfUIItems.IndexOf(inventoryItemUI);
+                if (index != -1)
+                {
+                    OnDescriptionRequested?.Invoke(index);
+                }
             }
         }
 
