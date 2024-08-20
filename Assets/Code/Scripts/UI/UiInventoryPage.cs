@@ -9,6 +9,7 @@ namespace Inventory.UI
     public class UiInventoryPage : MonoBehaviour
     {
         private bool isInventoryOpen = false;
+        private int previousSelectedIndex = -1;
         [SerializeField] private UiInventoryDescription description;
 
         [Header("Inventory")]
@@ -130,6 +131,8 @@ namespace Inventory.UI
         // lista os itens no inventario
         public void Show()
         {
+            // Armazena o índice do slot selecionado na hotbar antes de abrir o inventário
+            previousSelectedIndex = FindObjectOfType<HotbarController>().GetSelectedIndex();
             inventoryPagePrefab.SetActive(true);
             ResetSelection();
             isInventoryOpen = true;
@@ -156,6 +159,7 @@ namespace Inventory.UI
             description.ResetDescription();
             isInventoryOpen = false;
             ResetDraggtedItem();
+            RestoreHotbarSelection();
         }
 
         private void HandleItemHovered(UiInventoryItem inventoryItemUI)
@@ -188,6 +192,22 @@ namespace Inventory.UI
             {
                 item.ResetData();
                 item.Deselect();
+            }
+        }
+
+        // Método para armazenar o índice do slot selecionado antes de abrir o inventário
+        public void StoreHotbarSelection(int selectedIndex)
+        {
+            previousSelectedIndex = selectedIndex;
+        }
+
+        // Método para restaurar a seleção do slot na hotbar após fechar o inventário
+        private void RestoreHotbarSelection()
+        {
+            if (previousSelectedIndex != -1)
+            {
+                // Simula a seleção do slot anterior
+                FindObjectOfType<HotbarController>().SelectSlot(previousSelectedIndex);
             }
         }
     }
