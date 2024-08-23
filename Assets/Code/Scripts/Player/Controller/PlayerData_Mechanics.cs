@@ -5,6 +5,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
+using Inventory.Model;
 
 public class PlayerData_Mechanics : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class PlayerData_Mechanics : MonoBehaviour
     public class throwing
     {
         public SpriteRenderer objectHolder;
+        public SpriteRenderer ItemHolder;
         public bool throwingObject;
         public bool throwingObjectInExecution;
         public float throwForce;
@@ -140,6 +142,12 @@ public class PlayerData_Mechanics : MonoBehaviour
 
         // Remover tile
         RemoveTile();
+    }
+
+    public void PickUpItem(InventoryItem item)
+    {
+        Throw.ItemHolder.sprite = item.item.ItemImage;
+        Carry.colObjectHolder.enabled = true;
     }
 
     public void FinishDownloadToGetItem()
@@ -259,3 +267,4 @@ public class PlayerData_Mechanics : MonoBehaviour
 
 
 }
+

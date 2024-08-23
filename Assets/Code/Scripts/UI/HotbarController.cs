@@ -7,6 +7,7 @@ namespace Inventory.UI
 {
     public class HotbarController : MonoBehaviour
     {
+        public PlayerData_Mechanics PlayerMechanics;
         [SerializeField] private RectTransform contentPanelBar;
         [SerializeField] private InventorySO inventoryData;
         [SerializeField] private int selectedIndex = 0;
@@ -57,11 +58,11 @@ namespace Inventory.UI
             {
                 selectedIndex = index;
                 UpdateHotbarItemSelection();
-                // Obtém o item selecionado e chama o evento
+                
                 InventoryItem selectedItem = GetSelectedItem();
                 OnSelectedItemChanged?.Invoke(selectedItem);
-                // Imprime as informações do item selecionado
-                PrintSelectedItemInfo(selectedItem);
+
+                HandleSelectedItemPickup(selectedItem);
             }
             else
             {
@@ -102,17 +103,13 @@ namespace Inventory.UI
         }
 
         // Método para imprimir as informações do item selecionado
-        private void PrintSelectedItemInfo(InventoryItem item)
+        private void HandleSelectedItemPickup(InventoryItem item)
         {
             if (item.item != null)
             {
-
-                Debug.Log($"Nome: {item.item.Name} Tipo: {item.item.Type} Descrição: {item.item.Description} Imagem: {item.item.ItemImage} Max Stack Size: {item.item.MaxStackSize} Is Stackable: {item.item.IsStackable}");
+                PlayerMechanics.PickUpItem(item);
             }
-            else
-            {
-                Debug.Log("Nenhum item selecionado.");
-            }
+            
         }
     }
 }
