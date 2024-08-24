@@ -19,15 +19,16 @@ namespace Inventory.Model
         [Space(20)]
 
         [Header("Drop Settings")]
-        [SerializeField] private GameObject prefab;
+        [SerializeField] private GameObject prefabDrop;
+        [SerializeField] private GameObject prefabToPlace;
         [SerializeField] private int minQuantityDrop = 1;
-        [SerializeField] private int maxQuantityDrop;
+        [SerializeField] private int maxQuantityDrop = 1;
         [SerializeField] private float probabilityDrop = 100;
 
         [Space(20)]
 
         [Header("Item Properties")]
-        [SerializeField] private bool isStackable;
+        [SerializeField] private bool isStackable = true;
         [SerializeField] private bool isConsumable;
         [SerializeField] private bool isSalable = true;
         [SerializeField] private bool isCraftMaterial = true;
@@ -47,7 +48,8 @@ namespace Inventory.Model
         public string Type => type;
         public string Description => description;
 
-        public GameObject Prefab => prefab;
+        public GameObject PrefabDrop => prefabDrop;
+        public GameObject PrefabToPlace => prefabToPlace;
         public int MinQuantityDrop => minQuantityDrop;
         public int MaxQuantityDrop => maxQuantityDrop;
         public float ProbabilityDrop => probabilityDrop;

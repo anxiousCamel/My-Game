@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1220c6e40d32a4f659dde066ff1e58c1, type: 3}
+  m_Name: DirtBLock
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: -2418722377241944386, guid: 3f0717fea0ff33c4e9e6469ea1c18fa4, type: 3}
+  maxStackSize: 16
+  itemName: Dirt BLock
+  type: Build
+  description: "\xE9 um bloco"
+  prefabDrop: {fileID: 0}
+  prefabToPlace: {fileID: 8197597512023469626, guid: e3142f4a87ff0c8419ff71adfb5d28bc, type: 3}
+  minQuantityDrop: 1
+  maxQuantityDrop: 1
+  probabilityDrop: 100
+  isStackable: 1
+  isConsumable: 0
+  isSalable: 0
+  isCraftMaterial: 0
+  isPlaceable: 1

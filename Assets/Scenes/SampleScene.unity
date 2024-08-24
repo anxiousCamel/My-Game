@@ -6439,6 +6439,17 @@ MonoBehaviour:
   virtualCamera: {fileID: 0}
   perlin: {fileID: 0}
   mainCamera: {fileID: 0}
+--- !u!114 &1179232516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6624645900308134922, guid: 7671df46b434e33eba44ee121366bf54, type: 3}
+  m_PrefabInstance: {fileID: 1777021544199998237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6cccdd4e7b5f97591c686fe6730e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1200733792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6995100718856025707, guid: 6c7091b5fb3f6de0ba013fd4f4f92fb8, type: 3}
@@ -11560,10 +11571,10 @@ MonoBehaviour:
   initialItems:
   - item: {fileID: 11400000, guid: 2106f065447aa3d848132cd57a1d1dc5, type: 2}
     quantity: 39
-  - item: {fileID: 0}
-    quantity: 0
-  - item: {fileID: 0}
-    quantity: 0
+  - item: {fileID: 11400000, guid: e3f406708d89738b481cefcaf14259b4, type: 2}
+    quantity: 7
+  - item: {fileID: 11400000, guid: 45324d39eae0a715388fa18f66e9d188, type: 2}
+    quantity: 5
   - item: {fileID: 0}
     quantity: 0
   - item: {fileID: 0}
@@ -12277,14 +12288,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tile: {fileID: 2025821886}
+  hotbarController: {fileID: 1179232516}
   ToPlace:
     canPlace: 0
     TimeToPlace: 2
     Preview: {fileID: 1246609963}
     Tilemap: {fileID: 1516627375}
     prefabToPlace: {fileID: 8197597512023469626, guid: e3142f4a87ff0c8419ff71adfb5d28bc, type: 3}
-    offsetToPlace: {x: 0.49, y: 0.49}
+    offsetToPlace: {x: 0.499, y: 0.499}
   Carry:
+    blockOfHotBar: 0
     downloadToGetItem: 0
     holderPosition: {fileID: 1789746089}
     tileSprite: {fileID: 0}

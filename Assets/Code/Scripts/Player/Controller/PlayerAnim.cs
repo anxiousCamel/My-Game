@@ -38,7 +38,7 @@ public class PlayerAnim : MonoBehaviour
                 {
                     if(Physic.BodyVelocity().y < 0.1f)
                     {
-                        if (Mechanics.Carry.identifiedGameObject != null || Mechanics.Carry.identifiedTile != null)
+                        if (Mechanics.Carry.tileSprite != null )
                         {
                             Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.IdleCarry);
                         }
@@ -54,7 +54,7 @@ public class PlayerAnim : MonoBehaviour
             #region Run      
             if (Physic.BodyVelocity().x > 0.1 && Collider.Check.isSolid && Physic.BodyVelocity().y < 0.1f)
             {
-                if (Mechanics.Carry.identifiedGameObject != null || Mechanics.Carry.identifiedTile != null)
+                if (Mechanics.Carry.tileSprite != null )
                 {
                     Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.RunCarry);
                 }
@@ -68,7 +68,7 @@ public class PlayerAnim : MonoBehaviour
             #region Jump
             if (Physic.BodyVelocity().y > 0.1 && !Collider.Check.isSolid && Movement.WallMove.isClimb == false)
             {
-                if (Mechanics.Carry.identifiedGameObject != null || Mechanics.Carry.identifiedTile != null)
+                if (Mechanics.Carry.tileSprite != null )
                 {
                     Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.JumpCarry);
                 }
@@ -84,7 +84,7 @@ public class PlayerAnim : MonoBehaviour
             {
                 if (Physic.BodyVelocity().y < 0.1 && !Collider.Check.isSolid)
                 {
-                    if (Mechanics.Carry.identifiedGameObject != null || Mechanics.Carry.identifiedTile != null)
+                    if (Mechanics.Carry.tileSprite != null )
                     {
                         Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.FallCarry);
                     }

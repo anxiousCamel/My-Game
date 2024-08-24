@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 using Inventory.Model;
+using Inventory.UI;
 
 public class PlayerData_Mechanics : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerData_Mechanics : MonoBehaviour
     private PlayerData_Physics Physics;
     private PlayerData_Input Input;
     public IdentifyTile Tile;
+    public HotbarController hotbarController; 
 
     [Space(5)] public toPlace ToPlace = new();
     [Space(5)] public carry Carry = new();
@@ -56,6 +58,7 @@ public class PlayerData_Mechanics : MonoBehaviour
     [System.Serializable]
     public class carry
     {
+        public bool blockOfHotBar = false;
         public bool downloadToGetItem;
         public Transform holderPosition;
         public Sprite tileSprite;
@@ -140,14 +143,37 @@ public class PlayerData_Mechanics : MonoBehaviour
 
         Carry.colObjectHolder.enabled = true;
 
+        // garantir que não é um item da hotbar
+        Carry.blockOfHotBar = false;
+        ClearItemPickUp();
+
         // Remover tile
         RemoveTile();
     }
 
+    // levantar o item nos braços
     public void PickUpItem(InventoryItem item)
     {
-        Throw.ItemHolder.sprite = item.item.ItemImage;
+        Throw.objectHolder.sprite = item.item.ItemImage;
         Carry.colObjectHolder.enabled = true;
+
+        Carry.identifiedGameObject = item.item.PrefabToPlace;
+        Carry.tileSprite = item.item.ItemImage;
+        Carry.identifiedTile = null;
+
+        Throw.ItemHolder.sprite = null;
+    }
+
+    // colocar item da hotbar na mao
+    public void GrabHoldItem(InventoryItem item)
+    {
+        Throw.ItemHolder.sprite = item.item.ItemImage;
+    }
+
+    public void ClearItemPickUp()
+    {
+        Throw.ItemHolder.sprite = null;
+        Carry.colObjectHolder.enabled = false;
     }
 
     public void FinishDownloadToGetItem()
@@ -239,6 +265,8 @@ public class PlayerData_Mechanics : MonoBehaviour
         Carry.tileSprite = null;
 
         Throw.objectHolder.sprite = null;
+
+        hotbarController.HandleSelectedItemPickup(hotbarController.SelectedItem());
     }
 
     public Vector3Int PositionIdentifier()

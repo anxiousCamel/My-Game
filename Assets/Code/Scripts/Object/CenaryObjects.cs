@@ -120,7 +120,7 @@ public class CenaryObjects : MonoBehaviour
             int quantity = Random.Range(minQuantity, maxQuantity + 1);
             for (int i = 0; i < quantity; i++)
             {
-                GameObject gameObjectInstantiate = Instantiate(InventoryItem.Prefab, transform.position, Quaternion.identity);
+                GameObject gameObjectInstantiate = Instantiate(InventoryItem.PrefabDrop, transform.position, Quaternion.identity);
                 //gameObjectInstantiate.GetComponent<ItemDroped>().item = InventoryItem;
             }
         }

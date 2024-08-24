@@ -32,6 +32,9 @@ namespace Inventory.UI
 
             // Seleciona o primeiro slot na inicialização
             SelectSlot(0);
+
+            yield return null; // Espera um quadro para garantir 
+            HandleSelectedItemPickup(SelectedItem());
         }
 
         private void Update()
@@ -58,17 +61,21 @@ namespace Inventory.UI
             {
                 selectedIndex = index;
                 UpdateHotbarItemSelection();
-                
-                InventoryItem selectedItem = GetSelectedItem();
-                OnSelectedItemChanged?.Invoke(selectedItem);
 
-                HandleSelectedItemPickup(selectedItem);
+                HandleSelectedItemPickup(SelectedItem());
             }
             else
             {
                 // Mesmo que o índice não tenha mudado, ainda precisamos garantir que o slot esteja selecionado na inicialização
                 UpdateHotbarItemSelection();
             }
+        }
+
+        public InventoryItem SelectedItem()
+        {
+            InventoryItem Item = GetSelectedItem();
+            OnSelectedItemChanged?.Invoke(Item);
+            return Item;
         }
 
         private void UpdateHotbarItemSelection()
@@ -103,13 +110,49 @@ namespace Inventory.UI
         }
 
         // Método para imprimir as informações do item selecionado
-        private void HandleSelectedItemPickup(InventoryItem item)
+        public void HandleSelectedItemPickup(InventoryItem item)
         {
-            if (item.item != null)
+            if (item.item == null)
             {
-                PlayerMechanics.PickUpItem(item);
+                PlayerMechanics.Carry.blockOfHotBar = false;
+                PlayerMechanics.ClearItemPickUp();
+                return;
             }
-            
+
+            // Se não há um sprite carregado
+            if (PlayerMechanics.Carry.tileSprite == null)
+            {
+                PlayerMechanics.Carry.blockOfHotBar = item.item.IsPlaceable;
+
+                if (item.item.IsPlaceable)
+                {
+                    PlayerMechanics.PickUpItem(item);
+                }
+                else
+                {
+                    PlayerMechanics.GrabHoldItem(item);
+                }
+            }
+            // Se há um sprite carregado
+            else
+            {
+                if (!item.item.IsPlaceable && PlayerMechanics.Carry.blockOfHotBar)
+                {
+                    PlayerMechanics.Carry.blockOfHotBar = false;
+                    PlayerMechanics.CleanObject();
+                    PlayerMechanics.GrabHoldItem(item);
+                }
+                else
+                {
+                    PlayerMechanics.ClearItemPickUp();
+                }
+            }
+
+            // Se carrega um objeto do mundo
+            if (PlayerMechanics.Carry.tileSprite != null)
+            {
+                PlayerMechanics.ClearItemPickUp();
+            }
         }
     }
 }

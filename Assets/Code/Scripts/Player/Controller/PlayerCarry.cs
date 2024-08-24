@@ -38,13 +38,13 @@ public class PlayerCarry : MonoBehaviour
             StartThrowingObject();
         }
 
-        if(CanToPlace())
+        if (CanToPlace())
         {
-            if(Mechanics.Carry.identifiedGameObject != null)
+            if (Mechanics.Carry.identifiedGameObject != null)
             {
                 // Instanciar
                 GameObject instantiatedObject = Instantiate(Mechanics.Carry.identifiedGameObject, Mechanics.ToPlace.Tilemap.transform);
-                
+
                 // Mover para posição
                 instantiatedObject.transform.localPosition = (Vector2)Mechanics.ToPlace.Preview.transform.position + Mechanics.ToPlace.offsetToPlace;
 
@@ -52,7 +52,10 @@ public class PlayerCarry : MonoBehaviour
                 instantiatedObject.SetActive(true);
 
                 // Limpar
-                Destroy(Mechanics.Carry.identifiedGameObject);
+                if (Mechanics.Carry.identifiedGameObject != null)
+                {
+                    Destroy(Mechanics.Carry.identifiedGameObject);
+                }
                 Mechanics.CleanObject();
             }
 
