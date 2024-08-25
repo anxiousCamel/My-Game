@@ -21,6 +21,11 @@ public class PlayerCarry : MonoBehaviour
 
     private void Update()
     {
+
+        #region Interaction throw or place Cooldown
+        Mechanics.Throw.lastInteraction += 0.01f;
+        #endregion
+
         #region BugFix When hurt
         if (Mechanics.Hurt.isHurt)
         {
@@ -33,13 +38,20 @@ public class PlayerCarry : MonoBehaviour
 
         #region Lançamento de Objetos
         // Verifica se é possível iniciar o lançamento de um objeto e, em caso afirmativo, inicia o lançamento.
-        if (CanThrow())
+         if (CanThrow())
+        {
+            Mechanics.Throw.throwingTriggered = true;
+            Debug.Log( Mechanics.Throw.throwingTriggered);
+        }
+
+        if (Mechanics.Throw.throwingTriggered == true && Input.Time.lastInputUpObjectInteraction == 0)
         {
             StartThrowingObject();
         }
 
         if (CanToPlace())
         {
+            Mechanics.Throw.lastInteraction = 0;
             if (Mechanics.Carry.identifiedGameObject != null)
             {
                 // Instanciar
@@ -84,23 +96,27 @@ public class PlayerCarry : MonoBehaviour
             && !Mechanics.Throw.throwingObject
             && !Mechanics.Throw.throwingObjectInExecution
             && !Mechanics.Hurt.isHurt
-            && !Mechanics.Carry.downloadToGetItem;
+            && !Mechanics.Carry.downloadToGetItem
+            && Mechanics.Throw.lastInteraction >= Mechanics.Throw.cooldownThrow;
         }
 
 
         bool CanThrow()
         {
-            return Input.Time.lastInputUpObjectInteraction >= Mechanics.ToPlace.TimeToPlace
+            return Input.Time.durationInputObjectInteraction >= Mechanics.ToPlace.TimeToPlace
                 && Mechanics.Carry.tileSprite != null
                 && Mechanics.Target.canMoveTarget
                 && !Mechanics.Throw.throwingObject
                 && !Mechanics.Throw.throwingObjectInExecution
-                && !Mechanics.Hurt.isHurt;
+                && !Mechanics.Hurt.isHurt
+                && Mechanics.Throw.lastInteraction >= Mechanics.Throw.cooldownThrow;
         }
 
         void StartThrowingObject()
         {
+             Mechanics.Throw.throwingTriggered = false;
             Mechanics.Throw.throwingObject = true;
+            Mechanics.Throw.lastInteraction = 0;
         }
 
         #endregion
@@ -146,7 +162,11 @@ public class PlayerCarry : MonoBehaviour
 
         #region Target 
         // Verifica se há um objeto para carregar antes de prosseguir
-        else if (Input.Time.durationInputObjectInteraction >= 1.5 && Mechanics.Carry.tileSprite != null && !Mechanics.Hurt.isHurt)
+        else if (
+            Input.Time.durationInputObjectInteraction >= Mechanics.ToPlace.TimeToPlace
+            && Mechanics.Carry.tileSprite != null 
+            && !Mechanics.Hurt.isHurt
+            && Mechanics.Throw.lastInteraction >= Mechanics.Throw.cooldownThrow)
         {
             if (Mechanics.Target.canMoveTarget == false)
             {

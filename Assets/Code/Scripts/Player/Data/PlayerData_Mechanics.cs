@@ -75,6 +75,9 @@ public class PlayerData_Mechanics : MonoBehaviour
     [System.Serializable]
     public class throwing
     {
+        public bool throwingTriggered;
+        public float cooldownThrow;
+        [ReadOnly] public float lastInteraction;
         public SpriteRenderer objectHolder;
         public SpriteRenderer ItemHolder;
         public bool throwingObject;

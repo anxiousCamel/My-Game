@@ -12308,6 +12308,9 @@ MonoBehaviour:
     colObjectHolder: {fileID: 1789746092}
     newPosition: {x: 0, y: 0, z: 0}
   Throw:
+    throwingTriggered: 0
+    cooldownThrow: 2
+    lastInteraction: 0
     objectHolder: {fileID: 1789746090}
     ItemHolder: {fileID: 793564733}
     throwingObject: 0
