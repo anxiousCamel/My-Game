@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace Inventory.Model
 {
-    [CreateAssetMenu(menuName = "Inventory/Item")]
-    public class ItemSO : ScriptableObject
+    public abstract class ItemSO : ScriptableObject
     {
         public int ID => GetInstanceID();
 
@@ -33,6 +32,7 @@ namespace Inventory.Model
         [SerializeField] private bool isSalable = true;
         [SerializeField] private bool isCraftMaterial = true;
         [SerializeField] private bool isPlaceable;
+        
 
 
         #region Propriedades

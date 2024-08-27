@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72b5187b65bb92af7a8420a425f3410b, type: 3}
-  m_Name: Fibre
+  m_Name: Block
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 7066825956324017769, guid: ad9adaa78f1b33c9f860900ed83fc8b7, type: 3}
-  maxStackSize: 99
-  itemName: Fibra
-  type: Comun
-  description: Um material organico, duravel e maleavel.
-  prefabDrop: {fileID: 4941252043577310863, guid: be7bb59c28a3f8d9aa9b492b41fc76a1, type: 3}
-  prefabToPlace: {fileID: 0}
+  itemImage: {fileID: 0}
+  maxStackSize: 8
+  itemName: Bloco
+  type: Build
+  description: "\xC9 um quadrado bem quadrado, com cantos quadradados, e arestas
+    quadradas, profundidade quadrada e aparencia quadrada."
+  prefabDrop: {fileID: 0}
+  prefabToPlace: {fileID: 8197597512023469626, guid: e3142f4a87ff0c8419ff71adfb5d28bc, type: 3}
   minQuantityDrop: 1
   maxQuantityDrop: 1
   probabilityDrop: 100
   isStackable: 1
   isConsumable: 0
   isSalable: 1
-  isCraftMaterial: 1
+  isCraftMaterial: 0
   isPlaceable: 0
