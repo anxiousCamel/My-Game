@@ -36,7 +36,4 @@ public class ObjectHolder : MonoBehaviour
         mechanics.CleanObject();
         particle.Play();
     }
-
-
-
 }
