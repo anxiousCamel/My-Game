@@ -14,8 +14,9 @@ public class PlayerData_Mechanics : MonoBehaviour
     private PlayerData_Movement Movement;
     private PlayerData_Physics Physics;
     private PlayerData_Input Input;
+    private PlayerUseItem playerUseItem;
     public IdentifyTile Tile;
-    public HotbarController hotbarController; 
+    public HotbarController hotbarController;
 
     [Space(5)] public toPlace ToPlace = new();
     [Space(5)] public carry Carry = new();
@@ -102,6 +103,7 @@ public class PlayerData_Mechanics : MonoBehaviour
         Physics = GetComponent<PlayerData_Physics>();
         Input = GetComponent<PlayerData_Input>();
         Movement = GetComponent<PlayerData_Movement>();
+        playerUseItem = GetComponent<PlayerUseItem>();
     }
 
 
@@ -114,6 +116,9 @@ public class PlayerData_Mechanics : MonoBehaviour
 
     public void CreateObjectThorn()
     {
+        // Descontar
+        playerUseItem.UseItemHotbar();
+
         // Instanciar sem transformador pai (será colocado na cena)
         GameObject ProjectTile = Instantiate(Throw.prefabObjectThrow, Carry.holderPosition.position, Quaternion.identity, null);
 

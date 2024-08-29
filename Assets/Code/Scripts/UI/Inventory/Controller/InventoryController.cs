@@ -60,11 +60,34 @@ namespace Inventory
             this.inventoryUi.OnItemActionRequested += HandleItemActionRequested;
         }
 
-        private void HandleItemActionRequested(int itemIndex)
+        public void HandleItemActionRequested(int itemIndex)
         {
-
+            HandleItemActionRequested(itemIndex, gameObject);
         }
 
+        public void HandleItemActionRequested(int itemIndex, GameObject player)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.isEmpty)
+            {
+                return;
+            }
+
+            // Use item
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null)
+            {
+                itemAction.PerformAction(player); // Usando o player que foi passado
+            }
+
+            IDestroyItem destroyItem = inventoryItem.item as IDestroyItem;
+            if(destroyItem != null)
+            {
+                int quantity = 1;
+                inventoryData.RemoveItem(itemIndex,quantity);
+            }
+        }
+        
         private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
         {
             InventoryItem item1 = inventoryData.GetItemAt(itemIndex_1);

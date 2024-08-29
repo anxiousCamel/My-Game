@@ -2,6 +2,8 @@ using UnityEngine;
 using Inventory.Model;
 using Inventory.UI;
 using System.Collections;
+using System.Collections.Generic;
+
 
 namespace Inventory.UI
 {
@@ -11,6 +13,7 @@ namespace Inventory.UI
         [SerializeField] private RectTransform contentPanelBar;
         [SerializeField] private InventorySO inventoryData;
         [SerializeField] private int selectedIndex = 0;
+        [SerializeField] private int previousSelectedIndex = -1; // Armazena o índice anteriormente selecionado
         [SerializeField] private UiInventoryPage inventoryUi; // Adicionado para usar eventos já configurados
 
         // Adicionado um evento para quando o item selecionado mudar
@@ -18,11 +21,31 @@ namespace Inventory.UI
 
         private void Start()
         {
+            // Inscrever-se no evento OnInventoryUpdated
+            inventoryData.OnInventoryUpdated += OnInventoryUpdated;
+
             // Atualiza a seleção da hotbar
             StartCoroutine(InitializeSelection());
 
             // Certifique-se de que a hotbar esteja armazenando a seleção ao abrir o inventário
             inventoryUi.StoreHotbarSelection(selectedIndex);
+        }
+
+        private void OnInventoryUpdated(Dictionary<int, InventoryItem> currentInventoryState)
+        {
+            StartCoroutine(SelectItemAfterUse());
+        }
+
+        private IEnumerator SelectItemAfterUse()
+        {
+            // Espera um quadro para garantir que a interface do usuário esteja completamente pronta
+            yield return null;
+
+            // Revalidar o item selecionado na Hotbar
+            HandleSelectedItemPickup(SelectedItem());
+
+            // Atualizar visualmente a Hotbar
+            UpdateHotbarItemSelection();
         }
 
         private IEnumerator InitializeSelection()
@@ -78,27 +101,33 @@ namespace Inventory.UI
             return Item;
         }
 
+
+
         private void UpdateHotbarItemSelection()
         {
-            // Itera sobre todos os slots na hotbar
-            for (int i = 0; i < contentPanelBar.childCount; i++)
+            // Desseleciona o slot anterior, se houver
+            if (previousSelectedIndex >= 0 && previousSelectedIndex != selectedIndex)
             {
-                var uiItem = contentPanelBar.GetChild(i).GetComponent<UiInventoryItem>();
-                if (uiItem != null)
+                var previousItem = contentPanelBar.GetChild(previousSelectedIndex).GetComponent<UiInventoryItem>();
+                if (previousItem != null)
                 {
-                    if (i == selectedIndex)
-                    {
-                        uiItem.Select();
-                    }
-                    else
-                    {
-                        uiItem.Deselect();
-                    }
+                    //desselecionou o anterior
+                    previousItem.Deselect();
                 }
             }
+
+            // Seleciona o novo slot
+            var currentItem = contentPanelBar.GetChild(selectedIndex).GetComponent<UiInventoryItem>();
+            if (currentItem != null)
+            {
+                //selecionou o novo");
+                currentItem.Select();
+            }
+
+            // Atualiza o índice anterior
+            previousSelectedIndex = selectedIndex;
         }
 
-        // Método para obter o item selecionado
         public InventoryItem GetSelectedItem()
         {
             return inventoryData.GetItemAt(selectedIndex);
@@ -109,7 +138,6 @@ namespace Inventory.UI
             return selectedIndex;
         }
 
-        // Método para imprimir as informações do item selecionado
         public void HandleSelectedItemPickup(InventoryItem item)
         {
             if (item.item == null)

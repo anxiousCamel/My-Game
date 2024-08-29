@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b5187b65bb92af7a8420a425f3410b, type: 3}
   m_Name: Block
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
+  itemImage: {fileID: -2418722377241944386, guid: 3f0717fea0ff33c4e9e6469ea1c18fa4, type: 3}
   maxStackSize: 8
   itemName: Bloco
   type: Build
@@ -27,4 +27,5 @@ MonoBehaviour:
   isConsumable: 0
   isSalable: 1
   isCraftMaterial: 0
-  isPlaceable: 0
+  isPlaceable: 1
+  modifiersData: []

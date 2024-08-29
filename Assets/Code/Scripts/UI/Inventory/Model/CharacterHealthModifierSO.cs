@@ -6,7 +6,7 @@ public class CharacterHealthModifierSO : CharacterStatsModifierSO
 {
     public override void AffectCharacter(GameObject character, float val)
     {
-        PlayerStats stats = character.GetComponent<PlayerStats>();
+        PlayerData_Stats stats = character.GetComponent<PlayerData_Stats>();
         if (stats != null)
         {
             stats.AddHealth((int)val);

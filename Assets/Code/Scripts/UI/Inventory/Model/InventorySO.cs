@@ -184,8 +184,37 @@ namespace Inventory.Model
             }
         }
 
+        public void RemoveItem(int itemIndex, int quantity)
+        {
+           if(InventoryItems.Count > itemIndex)
+           {
+                // verificar indice valido
+                if(InventoryItems[itemIndex].isEmpty)
+                {
+                    return;
+                }
 
+                else
+                {
+                    // quantidade a remover
+                    int reminder =  InventoryItems[itemIndex].quantity - quantity;
 
+                    // remover item se zero
+                    if(reminder <= 0)
+                    {
+                        InventoryItems[itemIndex] = InventoryItem.GetEmptyItem();
+                    }
+
+                    // remover quantidade 
+                    else
+                    {
+                        InventoryItems[itemIndex] = InventoryItems[itemIndex].ChangeQuantity(reminder);
+                    }
+
+                    InformAboutChange();
+                }
+           }
+        }
     }
 
     [Serializable]

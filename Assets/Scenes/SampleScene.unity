@@ -11568,7 +11568,13 @@ MonoBehaviour:
   inventoryUi: {fileID: 763629947}
   inventoryData: {fileID: 11400000, guid: 52d651f78f8fedb689e8cf5840e5a6e0, type: 2}
   input: {fileID: 1443675671}
-  initialItems: []
+  initialItems:
+  - item: {fileID: 11400000, guid: f411b024fb2d24564a898de47551b486, type: 2}
+    quantity: 21
+  - item: {fileID: 11400000, guid: 1095f73fda079131b8182837899e182e, type: 2}
+    quantity: 15
+  - item: {fileID: 11400000, guid: 45324d39eae0a715388fa18f66e9d188, type: 2}
+    quantity: 26
 --- !u!1 &1332210032
 GameObject:
   m_ObjectHideFlags: 3
@@ -11828,6 +11834,8 @@ GameObject:
   - component: {fileID: 1443675690}
   - component: {fileID: 1443675691}
   - component: {fileID: 1443675695}
+  - component: {fileID: 1443675696}
+  - component: {fileID: 1443675697}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -12219,7 +12227,7 @@ MonoBehaviour:
     newPosition: {x: 0, y: 0, z: 0}
   Throw:
     throwingTriggered: 0
-    cooldownThrow: 2
+    cooldownThrow: 0.8
     lastInteraction: 0
     objectHolder: {fileID: 1789746090}
     ItemHolder: {fileID: 793564733}
@@ -12478,6 +12486,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryData: {fileID: 11400000, guid: 52d651f78f8fedb689e8cf5840e5a6e0, type: 2}
+--- !u!114 &1443675696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443675651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9bbe127b6531d09a8bbcccd6b61d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryController: {fileID: 1296922659}
+  stats: {fileID: 1443675697}
+--- !u!114 &1443675697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443675651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38e7615b2811d17989ffc52b71c7d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0
 --- !u!1 &1516627375
 GameObject:
   m_ObjectHideFlags: 0

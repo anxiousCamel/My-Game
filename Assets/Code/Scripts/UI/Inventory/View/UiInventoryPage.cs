@@ -44,6 +44,7 @@ namespace Inventory.UI
         {
             for (int i = 0; i < inventorySize; i++)
             {
+
                 UiInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
 
                 // Usa operador ternário para definir o pai (parent) do item
@@ -59,6 +60,7 @@ namespace Inventory.UI
                 uiItem.OnRightClick += HandleRightClick;
                 uiItem.OnItemHovered += HandleItemHovered;
                 uiItem.OnItemHoverExit += HandleItemHoverExit;
+
             }
         }
 
@@ -164,7 +166,7 @@ namespace Inventory.UI
 
         private void HandleItemHovered(UiInventoryItem inventoryItemUI)
         {
-            if(isInventoryOpen)
+            if (isInventoryOpen)
             {
                 int index = listOfUIItems.IndexOf(inventoryItemUI);
                 if (index != -1)
@@ -188,7 +190,7 @@ namespace Inventory.UI
 
         internal void ResetAllItems()
         {
-            foreach(var item in listOfUIItems)
+            foreach (var item in listOfUIItems)
             {
                 item.ResetData();
                 item.Deselect();

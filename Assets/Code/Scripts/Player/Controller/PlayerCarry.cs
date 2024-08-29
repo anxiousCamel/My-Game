@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
 public class PlayerCarry : MonoBehaviour
 {
     private PlayerData_Input Input;
-    private PlayerData_Collider Collider;
     private PlayerData_Mechanics Mechanics;
+    private PlayerData_Collider Collider;
     private PlayerData_Physics Physic;
+
+    private PlayerUseItem playerUseItem;
 
 
     private void Awake()
     {
         Input = GetComponent<PlayerData_Input>();
-        Collider = GetComponent<PlayerData_Collider>();
         Mechanics = GetComponent<PlayerData_Mechanics>();
+        Collider = GetComponent<PlayerData_Collider>();
         Physic = GetComponent<PlayerData_Physics>();
+        playerUseItem = GetComponent<PlayerUseItem>();
     }
 
     private void Update()
@@ -38,10 +42,9 @@ public class PlayerCarry : MonoBehaviour
 
         #region Lançamento de Objetos
         // Verifica se é possível iniciar o lançamento de um objeto e, em caso afirmativo, inicia o lançamento.
-         if (CanThrow())
+        if (CanThrow())
         {
             Mechanics.Throw.throwingTriggered = true;
-            Debug.Log( Mechanics.Throw.throwingTriggered);
         }
 
         if (Mechanics.Throw.throwingTriggered == true && Input.Time.lastInputUpObjectInteraction == 0)
@@ -57,6 +60,9 @@ public class PlayerCarry : MonoBehaviour
                 // Instanciar
                 GameObject instantiatedObject = Instantiate(Mechanics.Carry.identifiedGameObject, Mechanics.ToPlace.Tilemap.transform);
 
+                // Descontar
+                playerUseItem.UseItemHotbar();
+
                 // Mover para posição
                 instantiatedObject.transform.localPosition = (Vector2)Mechanics.ToPlace.Preview.transform.position + Mechanics.ToPlace.offsetToPlace;
 
@@ -64,10 +70,12 @@ public class PlayerCarry : MonoBehaviour
                 instantiatedObject.SetActive(true);
 
                 // Limpar
-                if (Mechanics.Carry.identifiedGameObject != null)
+                if (Mechanics.Carry.identifiedGameObject != null && !EditorUtility.IsPersistent(Mechanics.Carry.identifiedGameObject))
                 {
                     Destroy(Mechanics.Carry.identifiedGameObject);
                 }
+
+
                 Mechanics.CleanObject();
             }
 
@@ -76,6 +84,9 @@ public class PlayerCarry : MonoBehaviour
                 // Instanciar
                 Mechanics.ToPlace.prefabToPlace.GetComponent<SpriteRenderer>().sprite = Mechanics.Carry.tileSprite;
                 GameObject instantiatedObject = Instantiate(Mechanics.ToPlace.prefabToPlace, Mechanics.ToPlace.Tilemap.transform);
+
+                // Descontar
+                playerUseItem.UseItemHotbar();
 
                 // Mover para posição
                 instantiatedObject.transform.localPosition = (Vector2)Mechanics.ToPlace.Preview.transform.position + Mechanics.ToPlace.offsetToPlace;
@@ -114,7 +125,7 @@ public class PlayerCarry : MonoBehaviour
 
         void StartThrowingObject()
         {
-             Mechanics.Throw.throwingTriggered = false;
+            Mechanics.Throw.throwingTriggered = false;
             Mechanics.Throw.throwingObject = true;
             Mechanics.Throw.lastInteraction = 0;
         }
@@ -164,7 +175,7 @@ public class PlayerCarry : MonoBehaviour
         // Verifica se há um objeto para carregar antes de prosseguir
         else if (
             Input.Time.durationInputObjectInteraction >= Mechanics.ToPlace.TimeToPlace
-            && Mechanics.Carry.tileSprite != null 
+            && Mechanics.Carry.tileSprite != null
             && !Mechanics.Hurt.isHurt
             && Mechanics.Throw.lastInteraction >= Mechanics.Throw.cooldownThrow)
         {

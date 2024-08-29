@@ -23,7 +23,10 @@ MonoBehaviour:
   maxQuantityDrop: 1
   probabilityDrop: 100
   isStackable: 1
-  isConsumable: 0
+  isConsumable: 1
   isSalable: 1
   isCraftMaterial: 0
   isPlaceable: 0
+  modifiersData:
+  - statsModifier: {fileID: 11400000, guid: 89b0da964f6ef3ab89ebfe7ffd8082ca, type: 2}
+    value: 23.5

@@ -23,7 +23,18 @@
 / [x] Colocar objeto no mundo
 
 --------------------------------------------
-
+28/08
+[x] inventario
+[x] abrir e fechar
+[x] coletar items
+[x] trocar posição de items
+[x] descrição de items
+[x] usar items
+[] animação/efeitos/sons de usar item
+[] efeitos e sons de colocar itens
+[] remover items
+[] dropar items 
+--------------------------------------------
 [] Desenhar um mapa
 [] Começar as dungeons
 [] Começar efeitos de paralaxx do abismo
@@ -47,5 +58,3 @@ https://www.youtube.com/watch?v=1h-hSlffawM&ab_channel=SasquatchBStudios
 [] Post Processing
 https://www.youtube.com/watch?v=xxM6AUHqTMA&ab_channel=SasquatchBStudios
 
-[x] Ui
-https://www.youtube.com/watch?v=_jtj73lu2Ko&ab_channel=SasquatchBStudios
