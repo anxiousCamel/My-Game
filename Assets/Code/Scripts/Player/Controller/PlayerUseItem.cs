@@ -11,7 +11,6 @@ public class PlayerUseItem : MonoBehaviour
 {
     private PlayerData_Input Input;
     private PlayerData_Mechanics Mechanics;
-    private HotbarController Hotbar;
     public InventoryController inventoryController;
     public PlayerData_Stats stats;
 
@@ -21,17 +20,22 @@ public class PlayerUseItem : MonoBehaviour
         stats = GetComponent<PlayerData_Stats>();
 
         Mechanics = GetComponent<PlayerData_Mechanics>();
-        Hotbar = Mechanics.hotbarController;
     }
 
     void Update()
     {
 
-        if (Input.CheckInput.inputObjectInteraction)
+        if (//Input.CheckInput.inputObjectInteraction
+        Input.Time.lastInputObjectInteraction == 0
+             && !Mechanics.Carry.downloadToGetItem
+             && !Mechanics.Carry.tileSprite
+             // fazer um cooldown de quando coloca ou arremesa item para poder consumir item 
+             && Mechanics.Throw.lastInteractionPlaceOrThrow >= Mechanics.Throw.cooldownThrow
+             )
         {
-            InventoryItem item = Hotbar.GetSelectedItem(); // colocar isso nas mechanics mover pra la q vai ser mais util pra outras coisas
-            
-            if (item.item.IsConsumable)
+            var selectedItem = Mechanics.GetSelectedItem();
+
+            if (selectedItem.item != null && selectedItem.item.IsConsumable)
             {
                 UseItemHotbar();
             }
@@ -40,11 +44,7 @@ public class PlayerUseItem : MonoBehaviour
 
     public void UseItemHotbar()
     {
-        inventoryController.HandleItemActionRequested(Hotbar.GetSelectedIndex(), gameObject);
+        inventoryController.HandleItemActionRequested(Mechanics.hotbarController.GetSelectedIndex(), gameObject);
     }
 
 }
-/*
-tem que melhorar isso aqui de place item, as vezes n da pra colocar 
-o item e eles desconta verificar a logica melhor, para que a confirmação 
-venha da function que coloca o item*/

@@ -78,6 +78,7 @@ public class PlayerData_Mechanics : MonoBehaviour
     {
         public bool throwingTriggered;
         public float cooldownThrow;
+        [ReadOnly] public float lastInteractionPlaceOrThrow;
         [ReadOnly] public float lastInteraction;
         public SpriteRenderer objectHolder;
         public SpriteRenderer ItemHolder;
@@ -106,6 +107,14 @@ public class PlayerData_Mechanics : MonoBehaviour
         playerUseItem = GetComponent<PlayerUseItem>();
     }
 
+    #region Hotbar
+    public InventoryItem GetSelectedItem()
+    {
+        InventoryItem item = hotbarController.GetSelectedItem();
+        return item;
+    }
+    #endregion
+
 
     #region Thorn
     // Retorna a posição de arremeso
@@ -116,8 +125,14 @@ public class PlayerData_Mechanics : MonoBehaviour
 
     public void CreateObjectThorn()
     {
+        // Cooldown use item
+        Throw.lastInteractionPlaceOrThrow = 0;
+
         // Descontar
-        playerUseItem.UseItemHotbar();
+        if (GetSelectedItem().item.IsPlaceable)
+        {
+            playerUseItem.UseItemHotbar();
+        }
 
         // Instanciar sem transformador pai (será colocado na cena)
         GameObject ProjectTile = Instantiate(Throw.prefabObjectThrow, Carry.holderPosition.position, Quaternion.identity, null);

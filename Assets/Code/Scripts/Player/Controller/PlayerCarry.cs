@@ -28,6 +28,7 @@ public class PlayerCarry : MonoBehaviour
 
         #region Interaction throw or place Cooldown
         Mechanics.Throw.lastInteraction += 0.01f;
+        Mechanics.Throw.lastInteractionPlaceOrThrow += 0.01f;
         #endregion
 
         #region BugFix When hurt
@@ -61,7 +62,13 @@ public class PlayerCarry : MonoBehaviour
                 GameObject instantiatedObject = Instantiate(Mechanics.Carry.identifiedGameObject, Mechanics.ToPlace.Tilemap.transform);
 
                 // Descontar
-                playerUseItem.UseItemHotbar();
+                if (Mechanics.GetSelectedItem().item.IsPlaceable)
+                {
+                    playerUseItem.UseItemHotbar();
+                }
+
+                // Cooldown use item
+                Mechanics.Throw.lastInteractionPlaceOrThrow = 0;
 
                 // Mover para posição
                 instantiatedObject.transform.localPosition = (Vector2)Mechanics.ToPlace.Preview.transform.position + Mechanics.ToPlace.offsetToPlace;
@@ -85,8 +92,14 @@ public class PlayerCarry : MonoBehaviour
                 Mechanics.ToPlace.prefabToPlace.GetComponent<SpriteRenderer>().sprite = Mechanics.Carry.tileSprite;
                 GameObject instantiatedObject = Instantiate(Mechanics.ToPlace.prefabToPlace, Mechanics.ToPlace.Tilemap.transform);
 
+                // Cooldown use item
+                Mechanics.Throw.lastInteractionPlaceOrThrow = 0;
+
                 // Descontar
-                playerUseItem.UseItemHotbar();
+                if (Mechanics.GetSelectedItem().item.IsPlaceable)
+                {
+                    playerUseItem.UseItemHotbar();
+                }
 
                 // Mover para posição
                 instantiatedObject.transform.localPosition = (Vector2)Mechanics.ToPlace.Preview.transform.position + Mechanics.ToPlace.offsetToPlace;
