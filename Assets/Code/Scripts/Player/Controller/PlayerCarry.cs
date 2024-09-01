@@ -64,6 +64,7 @@ public class PlayerCarry : MonoBehaviour
                 // Descontar
                 if (Mechanics.GetSelectedItem().item.IsPlaceable)
                 {
+                    instantiatedObject.GetComponent<SpriteRenderer>().sprite = Mechanics.GetSelectedItem().item.ItemImage;
                     playerUseItem.UseItemHotbar();
                 }
 
@@ -98,6 +99,7 @@ public class PlayerCarry : MonoBehaviour
                 // Descontar
                 if (Mechanics.GetSelectedItem().item.IsPlaceable)
                 {
+                    instantiatedObject.GetComponent<SpriteRenderer>().sprite = Mechanics.GetSelectedItem().item.ItemImage;
                     playerUseItem.UseItemHotbar();
                 }
 

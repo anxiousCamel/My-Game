@@ -29,7 +29,6 @@ public class PlayerUseItem : MonoBehaviour
         Input.Time.lastInputObjectInteraction == 0
              && !Mechanics.Carry.downloadToGetItem
              && !Mechanics.Carry.tileSprite
-             // fazer um cooldown de quando coloca ou arremesa item para poder consumir item 
              && Mechanics.Throw.lastInteractionPlaceOrThrow >= Mechanics.Throw.cooldownThrow
              )
         {
