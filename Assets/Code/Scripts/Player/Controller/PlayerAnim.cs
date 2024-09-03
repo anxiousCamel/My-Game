@@ -23,7 +23,7 @@ public class PlayerAnim : MonoBehaviour
 
     void Update()
     {
-        if(Mechanics.Hurt.isHurt)
+        if (Mechanics.Hurt.isHurt)
         {
             Anim.ChangeAnimationStateEvent(PlayerData_Anim.AnimationState.Hurt);
             Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.Hurt);
@@ -32,13 +32,13 @@ public class PlayerAnim : MonoBehaviour
         if (Movement.Controllers.canMove == true && !Mechanics.Hurt.isHurt)
         {
             #region Idle 
-            if (Mechanics.Carry.downloadToGetItem == false && Mechanics.Throw.throwingObjectInExecution == false)
+            if (Mechanics.Carry.consumableAnimgTriggered == false && Mechanics.Carry.downloadToGetItem == false && Mechanics.Throw.throwingObjectInExecution == false)
             {
                 if (Collider.Check.isSolid && Physic.BodyVelocity().x < 0.1f)
                 {
-                    if(Physic.BodyVelocity().y < 0.1f)
+                    if (Physic.BodyVelocity().y < 0.1f)
                     {
-                        if (Mechanics.Carry.tileSprite != null )
+                        if (Mechanics.Carry.tileSprite != null)
                         {
                             Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.IdleCarry);
                         }
@@ -54,7 +54,7 @@ public class PlayerAnim : MonoBehaviour
             #region Run      
             if (Physic.BodyVelocity().x > 0.1 && Collider.Check.isSolid && Physic.BodyVelocity().y < 0.1f)
             {
-                if (Mechanics.Carry.tileSprite != null )
+                if (Mechanics.Carry.tileSprite != null)
                 {
                     Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.RunCarry);
                 }
@@ -68,7 +68,7 @@ public class PlayerAnim : MonoBehaviour
             #region Jump
             if (Physic.BodyVelocity().y > 0.1 && !Collider.Check.isSolid && Movement.WallMove.isClimb == false)
             {
-                if (Mechanics.Carry.tileSprite != null )
+                if (Mechanics.Carry.tileSprite != null)
                 {
                     Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.JumpCarry);
                 }
@@ -80,11 +80,11 @@ public class PlayerAnim : MonoBehaviour
             #endregion
 
             #region Fall
-            if (Mechanics.Carry.downloadToGetItem == false && Movement.WallMove.isSliding == false && Movement.WallMove.isClimb == false && Mechanics.Throw.throwingObjectInExecution == false)
+            if (Mechanics.Carry.consumableAnimgTriggered == false && Mechanics.Carry.downloadToGetItem == false && Movement.WallMove.isSliding == false && Movement.WallMove.isClimb == false && Mechanics.Throw.throwingObjectInExecution == false)
             {
                 if (Physic.BodyVelocity().y < 0.1 && !Collider.Check.isSolid)
                 {
-                    if (Mechanics.Carry.tileSprite != null )
+                    if (Mechanics.Carry.tileSprite != null)
                     {
                         Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.FallCarry);
                     }
@@ -146,8 +146,16 @@ public class PlayerAnim : MonoBehaviour
                     Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.ThrowAir);
                 }
             }
+            #endregion
+
+            #region Consumable item
+            if (Mechanics.Carry.consumableAnimgTriggered == true)
+            {
+                Anim.ChangeAnimationStateEvent(PlayerData_Anim.AnimationState.Eat);
+                Anim.ChangeAnimationState(PlayerData_Anim.AnimationState.Eat);
+            }
+            #endregion
         }
-        #endregion
 
     }
 }

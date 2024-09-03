@@ -12,13 +12,15 @@ public class PlayerUseItem : MonoBehaviour
     private PlayerData_Input Input;
     private PlayerData_Mechanics Mechanics;
     public InventoryController inventoryController;
+    private PlayerData_Collider Collider;
     public PlayerData_Stats stats;
+    public ParticleSystem particleEat;
 
     private void Awake()
     {
         Input = GetComponent<PlayerData_Input>();
         stats = GetComponent<PlayerData_Stats>();
-
+        Collider = GetComponent<PlayerData_Collider>();
         Mechanics = GetComponent<PlayerData_Mechanics>();
     }
 
@@ -34,11 +36,16 @@ public class PlayerUseItem : MonoBehaviour
         {
             var selectedItem = Mechanics.GetSelectedItem();
 
-            if (selectedItem.item != null && selectedItem.item.IsConsumable)
+            if (selectedItem.item != null && selectedItem.item.IsConsumable && Collider.Check.isGround)
             {
-                UseItemHotbar();
+                Mechanics.Carry.consumableAnimgTriggered = true;
             }
         }
+    }
+
+    public void ParticleEating()
+    {
+        particleEat.Play();
     }
 
     public void UseItemHotbar()

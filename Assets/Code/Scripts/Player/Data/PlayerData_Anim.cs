@@ -16,6 +16,7 @@ public class PlayerData_Anim : MonoBehaviour
         RunCarry,
         Jump,
         JumpCarry,
+        Eat,
         Fall,
         FallCarry,
         PickupDown,

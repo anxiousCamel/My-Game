@@ -59,6 +59,7 @@ public class PlayerData_Mechanics : MonoBehaviour
     [System.Serializable]
     public class carry
     {
+        public bool consumableAnimgTriggered;
         public bool isCleaned;
         public bool blockOfHotBar = false;
         public bool downloadToGetItem;
@@ -113,6 +114,12 @@ public class PlayerData_Mechanics : MonoBehaviour
     {
         InventoryItem item = hotbarController.GetSelectedItem();
         return item;
+    }
+
+    public void FinishConsumableItem()
+    {
+        playerUseItem.UseItemHotbar();
+        Carry.consumableAnimgTriggered = false;
     }
     #endregion
 
