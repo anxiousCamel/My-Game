@@ -31,8 +31,8 @@
 [x] descrição de items
 [x] usar items
 [] animação/efeitos/sons de usar item
-[] efeitos e sons de colocar itens
-[] remover items
+[x] efeitos e sons de colocar itens
+[x] remover items
 [] dropar items 
 --------------------------------------------
 [] Desenhar um mapa

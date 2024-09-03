@@ -59,6 +59,7 @@ public class PlayerData_Mechanics : MonoBehaviour
     [System.Serializable]
     public class carry
     {
+        public bool isCleaned;
         public bool blockOfHotBar = false;
         public bool downloadToGetItem;
         public Transform holderPosition;
@@ -129,9 +130,12 @@ public class PlayerData_Mechanics : MonoBehaviour
         Throw.lastInteractionPlaceOrThrow = 0;
 
         // Descontar
-        if (GetSelectedItem().item.IsPlaceable)
+        if (Carry.blockOfHotBar)
         {
-            playerUseItem.UseItemHotbar();
+            if (GetSelectedItem().item.IsPlaceable)
+            {
+                playerUseItem.UseItemHotbar();
+            }
         }
 
         // Instanciar sem transformador pai (será colocado na cena)
@@ -282,6 +286,11 @@ public class PlayerData_Mechanics : MonoBehaviour
     // Limpa Objeto
     public void CleanObject()
     {
+        if (!Carry.colObjectHolder.enabled && Carry.identifiedGameObject == null && Carry.identifiedTile == null && Carry.tileSprite == null)
+        {
+            return; // Evita recursão desnecessária
+        }
+
         Carry.colObjectHolder.enabled = false;
         Carry.identifiedGameObject = null;
         Carry.identifiedTile = null;
@@ -289,7 +298,13 @@ public class PlayerData_Mechanics : MonoBehaviour
 
         Throw.objectHolder.sprite = null;
 
-        hotbarController.HandleSelectedItemPickup(hotbarController.SelectedItem());
+        // Adicione uma verificação de estado ou um flag para evitar a recursão infinita
+        if (!Carry.isCleaned)
+        {
+            Carry.isCleaned = true;
+            hotbarController.HandleSelectedItemPickup(hotbarController.SelectedItem());
+        }
+        Carry.isCleaned = false;
     }
 
     public Vector3Int PositionIdentifier()

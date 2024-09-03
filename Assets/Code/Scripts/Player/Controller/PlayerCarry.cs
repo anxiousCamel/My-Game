@@ -97,10 +97,13 @@ public class PlayerCarry : MonoBehaviour
                 Mechanics.Throw.lastInteractionPlaceOrThrow = 0;
 
                 // Descontar
-                if (Mechanics.GetSelectedItem().item.IsPlaceable)
+                if(Mechanics.Carry.blockOfHotBar)
                 {
-                    instantiatedObject.GetComponent<SpriteRenderer>().sprite = Mechanics.GetSelectedItem().item.ItemImage;
-                    playerUseItem.UseItemHotbar();
+                    if (Mechanics.GetSelectedItem().item.IsPlaceable)
+                    {
+                        instantiatedObject.GetComponent<SpriteRenderer>().sprite = Mechanics.GetSelectedItem().item.ItemImage;
+                        playerUseItem.UseItemHotbar();
+                    }
                 }
 
                 // Mover para posição
