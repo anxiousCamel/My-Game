@@ -9,6 +9,7 @@ public class PlayerJump : MonoBehaviour
     private PlayerData_Collider Collider;
     private PlayerData_Physics Physics;
     private PlayerData_Input Input;
+    private PlayerData_Stats Stats;
 
     void Awake()
     {
@@ -17,6 +18,7 @@ public class PlayerJump : MonoBehaviour
         Collider = GetComponent<PlayerData_Collider>();
         Physics = GetComponent<PlayerData_Physics>();
         Input = GetComponent<PlayerData_Input>();
+        Stats = GetComponent<PlayerData_Stats>();
     }
 
     void Update()
@@ -34,7 +36,7 @@ public class PlayerJump : MonoBehaviour
         }
 
         // Wall Jump
-        if (CanJumpWall() && Input.CheckInput.inputJump)
+        if (CanJumpWall() && Input.CheckInput.inputJump && Stats.stamina >= 0)
         {
             Movement.Jump.isJumping = true;
             Movement.Jump.jumpWallRequest = true;
@@ -101,6 +103,8 @@ public class PlayerJump : MonoBehaviour
 
             Physics.Component.body.AddForce(jumpForce, ForceMode2D.Impulse);
         }
+
+        Stats.RemoveStamina(Movement.Jump.costWallJump);
     }
 
     private bool CanJump()

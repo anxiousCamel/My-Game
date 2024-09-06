@@ -93,3 +93,17 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.25
+    functionName: BlinkSpriteGreen
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.25
+    functionName: PlaySound
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 07100c3d472265643819145dadccdb39, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

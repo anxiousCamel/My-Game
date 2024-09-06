@@ -9,6 +9,7 @@ public class PlayerWallMove : MonoBehaviour
     private PlayerData_Collider Collider;
     private PlayerData_Physics Physic;
     private PlayerData_Input Input;
+    private PlayerData_Stats Stats;
 
     void Awake()
     {
@@ -17,6 +18,8 @@ public class PlayerWallMove : MonoBehaviour
         Collider = GetComponent<PlayerData_Collider>();
         Physic = GetComponent<PlayerData_Physics>();
         Input = GetComponent<PlayerData_Input>();
+        Stats = GetComponent<PlayerData_Stats>();
+
     }
 
     private void Update()
@@ -42,7 +45,7 @@ public class PlayerWallMove : MonoBehaviour
             && !Collider.Check.isLedgeGround
             || Movement.WallMove.isClimb == true;
 
-        Movement.WallMove.isSliding = isSlidingRight || isSlidingLeft;
+        Movement.WallMove.isSliding = Stats.stamina >= Movement.WallMove.costSliding && (isSlidingRight || isSlidingLeft);
 
 
         float verticalInput = Input.CheckInput.moveDirection.y;
@@ -65,6 +68,8 @@ public class PlayerWallMove : MonoBehaviour
             {
                 Physic.FreezePosition();
             }
+            
+            Stats.RemoveStamina(Movement.WallMove.costSliding);
         }
 
         // Reseta a flag de escalada se não estiver subindo

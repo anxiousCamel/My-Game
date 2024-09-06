@@ -10,12 +10,13 @@ public class PlayerCarry : MonoBehaviour
     private PlayerData_Mechanics Mechanics;
     private PlayerData_Collider Collider;
     private PlayerData_Physics Physic;
-
+    private PlayerData_Stats Stats;
     private PlayerUseItem playerUseItem;
 
 
     private void Awake()
     {
+        Stats = GetComponent<PlayerData_Stats>();
         Input = GetComponent<PlayerData_Input>();
         Mechanics = GetComponent<PlayerData_Mechanics>();
         Collider = GetComponent<PlayerData_Collider>();
@@ -48,7 +49,7 @@ public class PlayerCarry : MonoBehaviour
             Mechanics.Throw.throwingTriggered = true;
         }
 
-        if (Mechanics.Throw.throwingTriggered == true && Input.Time.lastInputUpObjectInteraction == 0)
+        if (Mechanics.Throw.throwingTriggered == true && Input.Time.lastInputUpObjectInteraction == 0 || Stats.stamina <= Mechanics.Target.costTarget)
         {
             StartThrowingObject();
         }

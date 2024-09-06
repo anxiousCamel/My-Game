@@ -44,6 +44,8 @@ public class PlayerData_Mechanics : MonoBehaviour
         public GameObject targetObject;
         public float speedTarget;
         [Range(0, 10)] public float maxDistanceFromPlayer;
+        public float costTarget;
+
     }
 
     [System.Serializable]

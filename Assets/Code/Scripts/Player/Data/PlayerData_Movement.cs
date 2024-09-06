@@ -36,6 +36,7 @@ public class PlayerData_Movement : MonoBehaviour
     [System.Serializable]
     public class jump
     {
+        public float costWallJump;
         public float ignorePlataform;
         public float jumpVelocity;
         public float debuffJumpVelocity;
@@ -55,7 +56,9 @@ public class PlayerData_Movement : MonoBehaviour
     {
         public Vector2 jumpWallVelocity;
         public bool isSliding;
+        public float costSliding;
         public bool isClimb;
+
         public float SpeedWallClimb;
         public Transform checkLedgeUp;
         public Transform checkLedgeDown;

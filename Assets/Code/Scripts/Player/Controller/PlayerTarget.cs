@@ -7,16 +7,18 @@ public class PlayerTarget : MonoBehaviour
     private PlayerData_Input Input;
 
     private PlayerData_Mechanics Mechanics;
+    private PlayerData_Stats Stats;
 
     private void Awake()
     {
+        Stats = GetComponent<PlayerData_Stats>();
         Input = GetComponent<PlayerData_Input>();
         Mechanics = GetComponent<PlayerData_Mechanics>();
     }
 
     private void Update()
     {
-        if (Mechanics.Target.canMoveTarget)
+        if (Mechanics.Target.canMoveTarget && Stats.stamina >= Mechanics.Target.costTarget)
         {
             Vector2 initialPlayerPosition = transform.position;
             // Calcula a direção do movimento do alvo
@@ -45,6 +47,9 @@ public class PlayerTarget : MonoBehaviour
                 Mechanics.Target.targetPosition = limitedPosition;
                 Mechanics.Target.targetObject.transform.position = Mechanics.Target.targetPosition;
             }
+
+            //Remover stamina
+            Stats.RemoveStamina(Mechanics.Target.costTarget);
         }
         else
         {
