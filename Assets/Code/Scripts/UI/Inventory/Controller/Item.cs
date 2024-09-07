@@ -11,13 +11,21 @@ public class Item : MonoBehaviour
     [field: SerializeField]
     public int Quantity { get; set; } = 1;
 
-
+    [Header("Animation")]
     [SerializeField]
-    private float duration = 0.3f;
+    public float duration = 0.5f;
+
+    [Header("Sound")]
+    public AudioClip soundPickUp;
+    [ReadOnly] public AudioSource audioSource;
+    AudioManager audioManager;
+
 
     private void Start()
     {
+        audioManager = GetComponent<AudioManager>();
         GetComponent<SpriteRenderer>().sprite = InventoryItem.ItemImage;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void DestroyItem()
@@ -29,14 +37,14 @@ public class Item : MonoBehaviour
 
     private IEnumerator AnimateItemPickup()
     {
-        //audioSource.Play();
+        audioManager.PlaySoundRandomPitch(soundPickUp);
         Vector3 startScale = transform.localScale;
         Vector3 endScale = Vector3.zero;
         float currentTime = 0;
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;
-            transform.localScale = 
+            transform.localScale =
                 Vector3.Lerp(startScale, endScale, currentTime / duration);
             yield return null;
         }

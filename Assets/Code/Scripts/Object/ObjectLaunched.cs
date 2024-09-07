@@ -9,6 +9,7 @@ public class ObjectLaunched : MonoBehaviour
     public BoxCollider2D boxCollider;
     public CircleCollider2D circleCollider;
     public AudioClip destructionAudio;
+    public LayerMask Collider;
     [ReadOnly] public GameObject player;
     [ReadOnly] public PlayerData_Collider playerCollider;
     [ReadOnly] public PlayerData_Mechanics playerMechanics;
@@ -67,7 +68,7 @@ public class ObjectLaunched : MonoBehaviour
         float distance = 0.1f;
 
         // Dispara um raio na direção especificada a partir do ponto de origem
-        RaycastHit2D hit = Physics2D.BoxCast(origin, size, 0, direction, distance, playerCollider.Layer.solid);
+        RaycastHit2D hit = Physics2D.BoxCast(origin, size, 0, direction, distance, Collider);
 
         // Verifica se houve colisão
         if (hit.collider != null)

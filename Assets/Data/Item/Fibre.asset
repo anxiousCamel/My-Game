@@ -27,3 +27,4 @@ MonoBehaviour:
   isSalable: 1
   isCraftMaterial: 1
   isPlaceable: 0
+  modifiersData: []

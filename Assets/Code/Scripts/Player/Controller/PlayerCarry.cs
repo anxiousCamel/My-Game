@@ -49,7 +49,7 @@ public class PlayerCarry : MonoBehaviour
             Mechanics.Throw.throwingTriggered = true;
         }
 
-        if (Mechanics.Throw.throwingTriggered == true && Input.Time.lastInputUpObjectInteraction == 0 || Stats.stamina <= Mechanics.Target.costTarget)
+        if (Mechanics.Throw.throwingTriggered == true && Input.Time.lastInputUpObjectInteraction == 0 || Stats.stamina <= Mechanics.Target.costTarget && Mechanics.Carry.tileSprite != null)
         {
             StartThrowingObject();
         }
