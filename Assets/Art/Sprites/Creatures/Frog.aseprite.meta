@@ -975,7 +975,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Frog_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -984,7 +984,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: 1939b7adc60c5ac4f96a208b813cae1f
-    - name: Frog_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -993,7 +993,7 @@ ScriptedImporter:
         width: 16
         height: 10
       spriteId: c9b1fc975c98b914a81511350ddbe843
-    - name: Frog_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -1002,7 +1002,7 @@ ScriptedImporter:
         width: 16
         height: 12
       spriteId: 28087ff4e43312a46b75d3d7e96bee46
-    - name: Frog_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -1011,7 +1011,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: 31f105d11e5708447911a2d4da370615
-    - name: Frog_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -1020,7 +1020,7 @@ ScriptedImporter:
         width: 16
         height: 10
       spriteId: 8259e9e4847141a43b7367f10b927785
-    - name: Frog_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -1029,7 +1029,7 @@ ScriptedImporter:
         width: 17
         height: 11
       spriteId: 8189ff65de3bd9545b9bcf1015719280
-    - name: Frog_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -1038,7 +1038,7 @@ ScriptedImporter:
         width: 17
         height: 12
       spriteId: 044e60900162acc47a9b4ab75cebe6f0
-    - name: Frog_Frame_7
+    - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -1047,7 +1047,7 @@ ScriptedImporter:
         width: 17
         height: 11
       spriteId: 84df9dffa81e15341a11f7426cbc8076
-    - name: Frog_Frame_8
+    - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
@@ -1056,7 +1056,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: 2f03274f734952b45a6e8dbf68a227dd
-    - name: Frog_Frame_9
+    - name: Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
@@ -1065,7 +1065,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: 76255697132550944b9b6e5fa07e7d89
-    - name: Frog_Frame_10
+    - name: Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
@@ -1074,7 +1074,7 @@ ScriptedImporter:
         width: 16
         height: 10
       spriteId: 6f37c3ecf797263469b7d0d165f94ef9
-    - name: Frog_Frame_11
+    - name: Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
@@ -1083,7 +1083,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: 33ff8c16547f69f4982a0ecb332fe1db
-    - name: Frog_Frame_12
+    - name: Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
@@ -1092,7 +1092,7 @@ ScriptedImporter:
         width: 16
         height: 12
       spriteId: 35e922593a4c30d4582e01b0d58183e2
-    - name: Frog_Frame_13
+    - name: Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
@@ -1101,7 +1101,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: d19d8b827de8ac74491e49e41ce8a764
-    - name: Frog_Frame_14
+    - name: Frame_14
       frameIndex: 14
       additiveSortOrder: 0
       cellRect:
@@ -1110,7 +1110,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: 3e16ff6435abd3b4bb064434a66c2177
-    - name: Frog_Frame_15
+    - name: Frame_15
       frameIndex: 15
       additiveSortOrder: 0
       cellRect:
@@ -1119,7 +1119,7 @@ ScriptedImporter:
         width: 16
         height: 9
       spriteId: 227fd4522ad24854db213a4549951817
-    - name: Frog_Frame_16
+    - name: Frame_16
       frameIndex: 16
       additiveSortOrder: 0
       cellRect:
@@ -1128,7 +1128,7 @@ ScriptedImporter:
         width: 17
         height: 13
       spriteId: 7760ed94bffc2c0448faa5f7a668faa4
-    - name: Frog_Frame_17
+    - name: Frame_17
       frameIndex: 17
       additiveSortOrder: 0
       cellRect:
@@ -1137,7 +1137,7 @@ ScriptedImporter:
         width: 16
         height: 12
       spriteId: 75f6ba70d001c594cb1e921a361b1f89
-    - name: Frog_Frame_18
+    - name: Frame_18
       frameIndex: 18
       additiveSortOrder: 0
       cellRect:
@@ -1146,7 +1146,7 @@ ScriptedImporter:
         width: 17
         height: 13
       spriteId: 34bc2bd11db5d1b4784d12a09123804c
-    - name: Frog_Frame_19
+    - name: Frame_19
       frameIndex: 19
       additiveSortOrder: 0
       cellRect:
@@ -1155,7 +1155,7 @@ ScriptedImporter:
         width: 17
         height: 11
       spriteId: 53b5daa537491e845a1db627a0dd7a58
-    - name: Frog_Frame_20
+    - name: Frame_20
       frameIndex: 20
       additiveSortOrder: 0
       cellRect:
@@ -1164,7 +1164,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: 830dc323128fd134289321ce5f1733a2
-    - name: Frog_Frame_21
+    - name: Frame_21
       frameIndex: 21
       additiveSortOrder: 0
       cellRect:
@@ -1173,7 +1173,7 @@ ScriptedImporter:
         width: 16
         height: 9
       spriteId: cc5f5dedbe2008a42adeb5e71dded5d3
-    - name: Frog_Frame_22
+    - name: Frame_22
       frameIndex: 22
       additiveSortOrder: 0
       cellRect:
@@ -1182,7 +1182,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: 70f65318b9363c547ae3fada9f031787
-    - name: Frog_Frame_23
+    - name: Frame_23
       frameIndex: 23
       additiveSortOrder: 0
       cellRect:
@@ -1191,7 +1191,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: b6baf5be7e33b9b488fd8c4352d0930f
-    - name: Frog_Frame_24
+    - name: Frame_24
       frameIndex: 24
       additiveSortOrder: 0
       cellRect:
@@ -1200,7 +1200,7 @@ ScriptedImporter:
         width: 15
         height: 11
       spriteId: 56cd44d4592d26246935d5ffe79d4456
-    - name: Frog_Frame_25
+    - name: Frame_25
       frameIndex: 25
       additiveSortOrder: 0
       cellRect:
@@ -1209,7 +1209,7 @@ ScriptedImporter:
         width: 14
         height: 11
       spriteId: 3fd33290a7fedae4e8a59a936ac0fa5f
-    - name: Frog_Frame_26
+    - name: Frame_26
       frameIndex: 26
       additiveSortOrder: 0
       cellRect:
@@ -1218,7 +1218,7 @@ ScriptedImporter:
         width: 14
         height: 11
       spriteId: 698f2d10107ea3e43a59690a2c481c51
-    - name: Frog_Frame_27
+    - name: Frame_27
       frameIndex: 27
       additiveSortOrder: 0
       cellRect:
@@ -1227,7 +1227,7 @@ ScriptedImporter:
         width: 14
         height: 11
       spriteId: 132205ac793d659498a049c389ae1862
-    - name: Frog_Frame_28
+    - name: Frame_28
       frameIndex: 28
       additiveSortOrder: 0
       cellRect:
@@ -1236,7 +1236,7 @@ ScriptedImporter:
         width: 14
         height: 10
       spriteId: 67b24acfd367d8b4aab619856791a25e
-    - name: Frog_Frame_29
+    - name: Frame_29
       frameIndex: 29
       additiveSortOrder: 0
       cellRect:
@@ -1245,7 +1245,7 @@ ScriptedImporter:
         width: 12
         height: 9
       spriteId: 275e2a38e57adb7439eff5a6a75545bf
-    - name: Frog_Frame_30
+    - name: Frame_30
       frameIndex: 30
       additiveSortOrder: 0
       cellRect:
@@ -1254,7 +1254,7 @@ ScriptedImporter:
         width: 14
         height: 11
       spriteId: 831ebcf68e2ca6b439c85dcb47b44e2e
-    - name: Frog_Frame_31
+    - name: Frame_31
       frameIndex: 31
       additiveSortOrder: 0
       cellRect:
@@ -1263,7 +1263,7 @@ ScriptedImporter:
         width: 14
         height: 12
       spriteId: c048d6dc27e025748a3764698951ac83
-    - name: Frog_Frame_32
+    - name: Frame_32
       frameIndex: 32
       additiveSortOrder: 0
       cellRect:
@@ -1272,7 +1272,7 @@ ScriptedImporter:
         width: 14
         height: 10
       spriteId: c400f7cc60c5f5441bc7d9862a451e71
-    - name: Frog_Frame_33
+    - name: Frame_33
       frameIndex: 33
       additiveSortOrder: 0
       cellRect:
@@ -1281,7 +1281,7 @@ ScriptedImporter:
         width: 12
         height: 9
       spriteId: 18c2caa55f67fea4b99bcd0fb6b9f465
-    - name: Frog_Frame_34
+    - name: Frame_34
       frameIndex: 34
       additiveSortOrder: 0
       cellRect:
@@ -1290,7 +1290,7 @@ ScriptedImporter:
         width: 14
         height: 10
       spriteId: 765ef66ea80728a42aca8f568afbf2a2
-    - name: Frog_Frame_35
+    - name: Frame_35
       frameIndex: 35
       additiveSortOrder: 0
       cellRect:
@@ -1299,7 +1299,7 @@ ScriptedImporter:
         width: 14
         height: 11
       spriteId: 8d82ff01414a0214f89da65a95dfd61b
-    - name: Frog_Frame_36
+    - name: Frame_36
       frameIndex: 36
       additiveSortOrder: 0
       cellRect:
@@ -1308,7 +1308,7 @@ ScriptedImporter:
         width: 14
         height: 11
       spriteId: 28dab4f987bcf9a4b999be446bd0a3f9
-    - name: Frog_Frame_37
+    - name: Frame_37
       frameIndex: 37
       additiveSortOrder: 0
       cellRect:
@@ -1317,7 +1317,7 @@ ScriptedImporter:
         width: 14
         height: 11
       spriteId: 6b6363ae57e98c04ca92499e20c318ba
-    - name: Frog_Frame_38
+    - name: Frame_38
       frameIndex: 38
       additiveSortOrder: 0
       cellRect:
@@ -1326,7 +1326,7 @@ ScriptedImporter:
         width: 15
         height: 11
       spriteId: 1ceebf0436f52bd4aa8116f735f7dbce
-    - name: Frog_Frame_39
+    - name: Frame_39
       frameIndex: 39
       additiveSortOrder: 0
       cellRect:
@@ -1335,7 +1335,7 @@ ScriptedImporter:
         width: 16
         height: 11
       spriteId: ad5803fe2a499e049a681ec5d325fba1
-    - name: Frog_Frame_40
+    - name: Frame_40
       frameIndex: 40
       additiveSortOrder: 0
       cellRect:

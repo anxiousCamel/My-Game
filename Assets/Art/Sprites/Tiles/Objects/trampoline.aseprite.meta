@@ -240,7 +240,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: trampoline_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -249,7 +249,7 @@ ScriptedImporter:
         width: 12
         height: 12
       spriteId: f5702401d67587148ae6dd684c877a48
-    - name: trampoline_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -258,7 +258,7 @@ ScriptedImporter:
         width: 12
         height: 12
       spriteId: 0489f7818d500284c9fbca4166a83659
-    - name: trampoline_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -267,7 +267,7 @@ ScriptedImporter:
         width: 12
         height: 12
       spriteId: c9abbcb412d36ae4ea3183d008ea949d
-    - name: trampoline_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -276,7 +276,7 @@ ScriptedImporter:
         width: 12
         height: 12
       spriteId: f9582772b87c43e428afe2638f63a2c5
-    - name: trampoline_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:

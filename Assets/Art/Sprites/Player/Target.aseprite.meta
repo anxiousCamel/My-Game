@@ -315,7 +315,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Target_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -324,7 +324,7 @@ ScriptedImporter:
         width: 7
         height: 7
       spriteId: 8beffe6ed5bdfe94e939f1920a25b838
-    - name: Target_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -333,7 +333,7 @@ ScriptedImporter:
         width: 7
         height: 7
       spriteId: 113a56deb84928d489b251dd9947edcd
-    - name: Target_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -342,7 +342,7 @@ ScriptedImporter:
         width: 9
         height: 9
       spriteId: 4a529b02d287fcd409a8d390bc713fae
-    - name: Target_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:

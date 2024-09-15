@@ -73,7 +73,7 @@ public class PreviewCheck : MonoBehaviour
         Vector3 playerPosition = player.position;
 
         // Calcula o offset baseado na rotação do jogador
-        float offsetX = (player.rotation.eulerAngles.y == 0f) ? offset.x : -offset.x +- 1;
+        float offsetX = (player.rotation.eulerAngles.y == 0f) ? offset.x : -offset.x + -1;
 
         // Calcula a posição na grade em unidades do Unity, adicionando o deslocamento
         float gridX = Mathf.Round((playerPosition.x + offsetX) / gridSize) * gridSize;

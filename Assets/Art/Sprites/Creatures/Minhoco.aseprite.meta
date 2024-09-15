@@ -420,7 +420,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Minhoco_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -429,7 +429,7 @@ ScriptedImporter:
         width: 10
         height: 9
       spriteId: dfc9899a8e3c27c4e8f902ef4f3cb32f
-    - name: Minhoco_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -438,7 +438,7 @@ ScriptedImporter:
         width: 10
         height: 8
       spriteId: b5a16f53002c91c4eae81d805c52fa5e
-    - name: Minhoco_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -447,7 +447,7 @@ ScriptedImporter:
         width: 10
         height: 9
       spriteId: bf2b7d3dcf0adc44a87b8c2861837594
-    - name: Minhoco_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -456,7 +456,7 @@ ScriptedImporter:
         width: 10
         height: 10
       spriteId: 9f59559c05113d342aff448801f5f096
-    - name: Minhoco_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -465,7 +465,7 @@ ScriptedImporter:
         width: 10
         height: 9
       spriteId: db5a56d98d444f2459d9b86e693c5e7e
-    - name: Minhoco_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -474,7 +474,7 @@ ScriptedImporter:
         width: 9
         height: 12
       spriteId: ec2cb838792da1f47a5f7faa027861b1
-    - name: Minhoco_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -483,7 +483,7 @@ ScriptedImporter:
         width: 10
         height: 9
       spriteId: 4d819325cc660e14983f54a82d69129d
-    - name: Minhoco_Frame_7
+    - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -492,7 +492,7 @@ ScriptedImporter:
         width: 9
         height: 12
       spriteId: f5119ddaf236603419de625496d5d085
-    - name: Minhoco_Frame_8
+    - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
@@ -501,7 +501,7 @@ ScriptedImporter:
         width: 9
         height: 43
       spriteId: 6618ebb216ab54248a6c4d45c62e9b71
-    - name: Minhoco_Frame_9
+    - name: Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
@@ -510,7 +510,7 @@ ScriptedImporter:
         width: 9
         height: 44
       spriteId: a7d88f264e53ad744988b23d158b53e7
-    - name: Minhoco_Frame_10
+    - name: Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
@@ -519,7 +519,7 @@ ScriptedImporter:
         width: 9
         height: 48
       spriteId: 3a58e9c5394ca274da9f7efce741ae30
-    - name: Minhoco_Frame_11
+    - name: Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
@@ -528,7 +528,7 @@ ScriptedImporter:
         width: 9
         height: 49
       spriteId: 76915b612e5f3394d8d2a6ea82bf55b0
-    - name: Minhoco_Frame_12
+    - name: Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
@@ -537,7 +537,7 @@ ScriptedImporter:
         width: 9
         height: 48
       spriteId: 3b7622356a3919d4f86fcf199c31cc08
-    - name: Minhoco_Frame_13
+    - name: Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:

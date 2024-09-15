@@ -175,7 +175,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: fly_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -184,7 +184,7 @@ ScriptedImporter:
         width: 3
         height: 2
       spriteId: 296d3c41640cb0c4ab9e31dfe854c630
-    - name: fly_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:

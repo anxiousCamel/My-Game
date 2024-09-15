@@ -215,7 +215,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: angel_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -224,7 +224,7 @@ ScriptedImporter:
         width: 28
         height: 22
       spriteId: 6bd08e5c26294af4f876aca23594f4f8
-    - name: angel_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -233,7 +233,7 @@ ScriptedImporter:
         width: 26
         height: 21
       spriteId: 023e6d3d092d4724d9c6b5843c196b74
-    - name: angel_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -242,7 +242,7 @@ ScriptedImporter:
         width: 26
         height: 21
       spriteId: b176897e45a7cb44db86b1412ad7e50a
-    - name: angel_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:

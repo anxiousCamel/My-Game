@@ -137,115 +137,115 @@ namespace Inventory.UI
             return selectedIndex;
         }
 
-      public void HandleSelectedItemPickup(InventoryItem item)
-{
-    // Verifica se o item é nulo
-    if (IsItemNull(item))
-    {
-        HandleNullItem(); // Lida com a lógica de item nulo
-        return;
-    }
+        public void HandleSelectedItemPickup(InventoryItem item)
+        {
+            // Verifica se o item é nulo
+            if (IsItemNull(item))
+            {
+                HandleNullItem(); // Lida com a lógica de item nulo
+                return;
+            }
 
-    // Verifica se nenhum sprite está carregado
-    if (IsNoSpriteLoaded())
-    {
-        HandleNoSpriteLoaded(item); // Lida com a lógica quando nenhum sprite está carregado
-    }
-    else
-    {
-        HandleSpriteLoaded(item); // Lida com a lógica quando um sprite já está carregado
-    }
+            // Verifica se nenhum sprite está carregado
+            if (IsNoSpriteLoaded())
+            {
+                HandleNoSpriteLoaded(item); // Lida com a lógica quando nenhum sprite está carregado
+            }
+            else
+            {
+                HandleSpriteLoaded(item); // Lida com a lógica quando um sprite já está carregado
+            }
 
-    // Verifica se o jogador está carregando algum objeto
-    if (IsCarryingObject())
-    {
-        PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item caso esteja carregando algo
-        print(3);
-    }
-}
+            // Verifica se o jogador está carregando algum objeto
+            if (IsCarryingObject())
+            {
+                PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item caso esteja carregando algo
+                print(3);
+            }
+        }
 
-/// <summary>
-/// Verifica se o item é nulo.
-/// </summary>
-/// <param name="item">O item a ser verificado.</param>
-/// <returns>Retorna true se o item for nulo.</returns>
-private bool IsItemNull(InventoryItem item)
-{
-    return item.item == null;
-}
+        /// <summary>
+        /// Verifica se o item é nulo.
+        /// </summary>
+        /// <param name="item">O item a ser verificado.</param>
+        /// <returns>Retorna true se o item for nulo.</returns>
+        private bool IsItemNull(InventoryItem item)
+        {
+            return item.item == null;
+        }
 
-/// <summary>
-/// Lida com a lógica quando o item é nulo.
-/// </summary>
-private void HandleNullItem()
-{
-    PlayerMechanics.Carry.blockOfHotBar = false;
+        /// <summary>
+        /// Lida com a lógica quando o item é nulo.
+        /// </summary>
+        private void HandleNullItem()
+        {
+            PlayerMechanics.Carry.blockOfHotBar = false;
 
-    // Se nenhum tile identificado está sendo carregado
-    if (PlayerMechanics.Carry.identifiedTile == null)
-    {
-        PlayerMechanics.CleanObject(); // Limpa o objeto carregado
-        print(0);
-    }
+            // Se nenhum tile identificado está sendo carregado
+            if (PlayerMechanics.Carry.identifiedTile == null)
+            {
+                PlayerMechanics.CleanObject(); // Limpa o objeto carregado
+                print(0);
+            }
 
-    PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item na hotbar
-    print(1);
-}
+            PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item na hotbar
+            print(1);
+        }
 
-/// <summary>
-/// Verifica se nenhum sprite está carregado.
-/// </summary>
-/// <returns>Retorna true se nenhum sprite está carregado.</returns>
-private bool IsNoSpriteLoaded()
-{
-    return PlayerMechanics.Carry.tileSprite == null;
-}
+        /// <summary>
+        /// Verifica se nenhum sprite está carregado.
+        /// </summary>
+        /// <returns>Retorna true se nenhum sprite está carregado.</returns>
+        private bool IsNoSpriteLoaded()
+        {
+            return PlayerMechanics.Carry.tileSprite == null;
+        }
 
-/// <summary>
-/// Lida com a lógica quando nenhum sprite está carregado.
-/// </summary>
-/// <param name="item">O item a ser manuseado.</param>
-private void HandleNoSpriteLoaded(InventoryItem item)
-{
-    PlayerMechanics.Carry.blockOfHotBar = item.item.IsPlaceable;
+        /// <summary>
+        /// Lida com a lógica quando nenhum sprite está carregado.
+        /// </summary>
+        /// <param name="item">O item a ser manuseado.</param>
+        private void HandleNoSpriteLoaded(InventoryItem item)
+        {
+            PlayerMechanics.Carry.blockOfHotBar = item.item.IsPlaceable;
 
-    if (item.item.IsPlaceable)
-    {
-        PlayerMechanics.PickUpItem(item); // Pega o item se ele for colocável
-    }
-    else
-    {
-        PlayerMechanics.GrabHoldItem(item); // Segura o item se ele não for colocável
-    }
-}
+            if (item.item.IsPlaceable)
+            {
+                PlayerMechanics.PickUpItem(item); // Pega o item se ele for colocável
+            }
+            else
+            {
+                PlayerMechanics.GrabHoldItem(item); // Segura o item se ele não for colocável
+            }
+        }
 
-/// <summary>
-/// Lida com a lógica quando um sprite já está carregado.
-/// </summary>
-/// <param name="item">O item a ser manuseado.</param>
-private void HandleSpriteLoaded(InventoryItem item)
-{
-    if (!item.item.IsPlaceable && PlayerMechanics.Carry.blockOfHotBar)
-    {
-        PlayerMechanics.Carry.blockOfHotBar = false;
-        PlayerMechanics.CleanObject(); // Limpa o objeto carregado
-        PlayerMechanics.GrabHoldItem(item); // Segura o item da hotbar
-    }
-    else
-    {
-        PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item
-        print(2);
-    }
-}
+        /// <summary>
+        /// Lida com a lógica quando um sprite já está carregado.
+        /// </summary>
+        /// <param name="item">O item a ser manuseado.</param>
+        private void HandleSpriteLoaded(InventoryItem item)
+        {
+            if (!item.item.IsPlaceable && PlayerMechanics.Carry.blockOfHotBar)
+            {
+                PlayerMechanics.Carry.blockOfHotBar = false;
+                PlayerMechanics.CleanObject(); // Limpa o objeto carregado
+                PlayerMechanics.GrabHoldItem(item); // Segura o item da hotbar
+            }
+            else
+            {
+                PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item
+                print(2);
+            }
+        }
 
-/// <summary>
-/// Verifica se o jogador está carregando algum objeto.
-/// </summary>
-/// <returns>Retorna true se o jogador estiver carregando um objeto.</returns>
-private bool IsCarryingObject()
-{
-    return PlayerMechanics.Carry.tileSprite != null;
-}
+        /// <summary>
+        /// Verifica se o jogador está carregando algum objeto.
+        /// </summary>
+        /// <returns>Retorna true se o jogador estiver carregando um objeto.</returns>
+        private bool IsCarryingObject()
+        {
+            return PlayerMechanics.Carry.tileSprite != null;
+        }
 
     }
 }

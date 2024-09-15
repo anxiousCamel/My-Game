@@ -9,6 +9,9 @@ TagManager:
   - Launched
   - Platform
   - InventorySlot
+  - Canvas
+  - Grid
+  - HotBar
   layers:
   - Default
   - TransparentFX

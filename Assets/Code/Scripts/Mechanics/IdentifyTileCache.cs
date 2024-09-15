@@ -11,14 +11,14 @@ public static class IdentifyTileCache
     {
         if (identifyTile == null)
         {
-            GameObject tileObject = GameObject.FindWithTag("EditorOnly");
+            GameObject tileObject = GameManager.grid;
             if (tileObject != null)
             {
                 identifyTile = tileObject.GetComponent<IdentifyTile>();
             }
             else
             {
-                Debug.LogWarning("Tile with tag 'EditorOnly' not found!");
+                Debug.LogWarning("Tile with tag 'Grid' not found!");
             }
         }
         return identifyTile;

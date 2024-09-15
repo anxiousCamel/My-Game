@@ -175,7 +175,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: dragonfly_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -184,7 +184,7 @@ ScriptedImporter:
         width: 3
         height: 5
       spriteId: eaa8656c70e63c2428e6c183778b8a7f
-    - name: dragonfly_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:

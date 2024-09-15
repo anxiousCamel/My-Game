@@ -10,7 +10,7 @@ namespace Inventory
     {
         [SerializeField] private UiInventoryPage inventoryUi;
         [SerializeField] private InventorySO inventoryData;
-        [SerializeField] private PlayerData_Input input;
+        [SerializeField] public PlayerData_Input input;
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
 
