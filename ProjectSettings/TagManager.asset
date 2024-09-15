@@ -12,6 +12,7 @@ TagManager:
   - Canvas
   - Grid
   - HotBar
+  - Confiner
   layers:
   - Default
   - TransparentFX

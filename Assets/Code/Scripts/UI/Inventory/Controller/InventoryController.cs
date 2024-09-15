@@ -81,13 +81,13 @@ namespace Inventory
             }
 
             IDestroyItem destroyItem = inventoryItem.item as IDestroyItem;
-            if(destroyItem != null)
+            if (destroyItem != null)
             {
                 int quantity = 1;
-                inventoryData.RemoveItem(itemIndex,quantity);
+                inventoryData.RemoveItem(itemIndex, quantity);
             }
         }
-        
+
         private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
         {
             InventoryItem item1 = inventoryData.GetItemAt(itemIndex_1);
@@ -136,23 +136,25 @@ namespace Inventory
 
         private void Update()
         {
-
-            if (input.CheckInput.inputInventory)
+            if (input != null)
             {
-                if (inventoryUi.inventoryPagePrefab.activeSelf)
+                if (input.CheckInput.inputInventory)
                 {
-                    inventoryUi.Hide();
-                }
-                else
-                {
-                    inventoryUi.Show();
-                    foreach (var item in inventoryData.GetCurrentInventoryState())
+                    if (inventoryUi.inventoryPagePrefab.activeSelf)
                     {
-                        inventoryUi.UpdateData(
-                            item.Key,
-                            item.Value.item.ItemImage,
-                            item.Value.quantity
-                        );
+                        inventoryUi.Hide();
+                    }
+                    else
+                    {
+                        inventoryUi.Show();
+                        foreach (var item in inventoryData.GetCurrentInventoryState())
+                        {
+                            inventoryUi.UpdateData(
+                                item.Key,
+                                item.Value.item.ItemImage,
+                                item.Value.quantity
+                            );
+                        }
                     }
                 }
             }

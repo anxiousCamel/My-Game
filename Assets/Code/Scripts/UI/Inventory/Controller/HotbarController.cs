@@ -198,7 +198,15 @@ namespace Inventory.UI
         /// <returns>Retorna true se nenhum sprite está carregado.</returns>
         private bool IsNoSpriteLoaded()
         {
-            return PlayerMechanics.Carry.tileSprite == null;
+            // Verifica se PlayerMechanics não é nulo
+            if (PlayerMechanics != null)
+            {
+                // Retorna true se o tileSprite for nulo
+                return PlayerMechanics.Carry.tileSprite == null;
+            }
+
+            // Caso PlayerMechanics seja nulo, considera que não há sprite carregado
+            return true;
         }
 
         /// <summary>
@@ -207,15 +215,18 @@ namespace Inventory.UI
         /// <param name="item">O item a ser manuseado.</param>
         private void HandleNoSpriteLoaded(InventoryItem item)
         {
-            PlayerMechanics.Carry.blockOfHotBar = item.item.IsPlaceable;
+            if (PlayerMechanics != null)
+            {
+                PlayerMechanics.Carry.blockOfHotBar = item.item.IsPlaceable;
 
-            if (item.item.IsPlaceable)
-            {
-                PlayerMechanics.PickUpItem(item); // Pega o item se ele for colocável
-            }
-            else
-            {
-                PlayerMechanics.GrabHoldItem(item); // Segura o item se ele não for colocável
+                if (item.item.IsPlaceable)
+                {
+                    PlayerMechanics.PickUpItem(item); // Pega o item se ele for colocável
+                }
+                else
+                {
+                    PlayerMechanics.GrabHoldItem(item); // Segura o item se ele não for colocável
+                }
             }
         }
 
@@ -244,7 +255,14 @@ namespace Inventory.UI
         /// <returns>Retorna true se o jogador estiver carregando um objeto.</returns>
         private bool IsCarryingObject()
         {
-            return PlayerMechanics.Carry.tileSprite != null;
+            if (PlayerMechanics != null)
+            {
+
+                return PlayerMechanics.Carry.tileSprite != null;
+            }
+            else
+
+            return false;
         }
 
     }
