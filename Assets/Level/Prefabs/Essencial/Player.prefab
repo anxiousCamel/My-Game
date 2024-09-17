@@ -24733,13 +24733,13 @@ GameObject:
   - component: {fileID: 5722182123860477415}
   - component: {fileID: 1600796146340330514}
   - component: {fileID: 7186585764974506646}
-  - component: {fileID: 27879021945011318}
   - component: {fileID: 6464085053319704559}
   - component: {fileID: 8909599149649379552}
   - component: {fileID: 4498518958234325707}
   - component: {fileID: 2566899851794356693}
   - component: {fileID: 1988713033619333139}
   - component: {fileID: 824346385166116599}
+  - component: {fileID: 1882942601947847966}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -25312,19 +25312,6 @@ MonoBehaviour:
   Movement: {fileID: 0}
   particles: {fileID: 0}
   Mechanics: {fileID: 0}
---- !u!114 &27879021945011318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6740578029228902322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834f3ad54c2a8314d979eff8f7ff0f3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogText: {fileID: 0}
 --- !u!114 &6464085053319704559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25491,6 +25478,18 @@ MonoBehaviour:
   stamina: 0
   maxStamina: 100
   playerSprite: {fileID: 1829901850123694637}
+--- !u!114 &1882942601947847966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740578029228902322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1ab28b273f9db48a200f078452112f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7189757423957917957
 GameObject:
   m_ObjectHideFlags: 0

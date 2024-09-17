@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7691920475066047961}
   - component: {fileID: 7024220480299170091}
   - component: {fileID: 822534341951311169}
+  - component: {fileID: 2777935188812840689}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -88,6 +89,21 @@ MonoBehaviour:
   virtualCamera: {fileID: 0}
   perlin: {fileID: 0}
   mainCamera: {fileID: 0}
+--- !u!114 &2777935188812840689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101490955955998198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 0}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
 --- !u!1 &1127099156704029061
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2642219105782074908}
   - component: {fileID: 1300411926933633950}
+  - component: {fileID: 4373242187006604643}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -443,8 +460,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd47a9a020472d41af61747e412a997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 0}
   TagPlayer: Player
-  TagCanvas: Canvas
+  gridObject: {fileID: 0}
+  TagGrid: Grid
+  hotBarObject: {fileID: 0}
+  TagHotBar: HotBar
+  inventoryControllerObject: {fileID: 0}
+  TagInventoryController: Canvas
+--- !u!114 &4373242187006604643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794416169197798931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1ab28b273f9db48a200f078452112f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8793585102372380996
 GameObject:
   m_ObjectHideFlags: 0
