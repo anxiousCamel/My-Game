@@ -1004,6 +1004,10 @@ PrefabInstance:
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4373242187006604643, guid: d4552d597d07ecf46890011f1d07b7b1, type: 3}
+      propertyPath: debugExistingObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4967678454168145447, guid: d4552d597d07ecf46890011f1d07b7b1, type: 3}
       propertyPath: ToPlace.Tilemap
       value: 
