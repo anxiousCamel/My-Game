@@ -6,8 +6,14 @@ public class ScenePreloadManagerEditor : Editor
 {
     private void OnEnable()
     {
-        // Ensures that the target is an instance of ScenePreloadManager
-        ScenePreloadManager manager = (ScenePreloadManager)target;
+        // Register a callback to repaint the inspector when changes are detected
+        EditorApplication.update += RepaintInspector;
+    }
+
+    private void OnDisable()
+    {
+        // Unregister the callback when the editor is disabled
+        EditorApplication.update -= RepaintInspector;
     }
 
     public override void OnInspectorGUI()
@@ -28,6 +34,15 @@ public class ScenePreloadManagerEditor : Editor
             EditorGUILayout.LabelField(kvp.Key.ToString(), kvp.Value ? "Activated" : "Not Activated");
         }
 
-        DrawDefaultInspector();
+        DrawDefaultInspector(); // Draw default inspector elements as well
+    }
+
+    private void RepaintInspector()
+    {
+        // Force the inspector to repaint
+        if (target != null)
+        {
+            Repaint();
+        }
     }
 }

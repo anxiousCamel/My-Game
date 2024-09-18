@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,18 +22,39 @@ public class ScenePreloadManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Initialize the scene that is already loaded at startup
+        InitializeCurrentScene();
+    }
+
+    private void InitializeCurrentScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        Scenes sceneEnum;
+        if (Enum.TryParse(currentScene.name, out sceneEnum))
+        {
+            // Ensure the current scene is marked as activated
+            if (!scenesActivated.ContainsKey(sceneEnum))
+            {
+                scenesActivated[sceneEnum] = true;
+            }
+        }
     }
 
     public void PreloadScene(Scenes scene)
     {
-        if (!preloadedScenes.ContainsKey(scene) && !scenesActivated.ContainsKey(scene))
+        // Verifica se a cena já está carregada ou pré-carregada
+        if (SceneManager.GetSceneByBuildIndex((int)scene).isLoaded || preloadedScenes.ContainsKey(scene))
         {
-            Debug.Log("Pré-carregando cena: " + scene);
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive);
-            asyncOperation.allowSceneActivation = false;
-            preloadedScenes.Add(scene, asyncOperation);
-            scenesActivated.Add(scene, false);
+            Debug.Log("Cena já está carregada ou pré-carregada: " + scene);
+            return;
         }
+
+        Debug.Log("Pré-carregando cena: " + scene);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive);
+        asyncOperation.allowSceneActivation = false;
+        preloadedScenes.Add(scene, asyncOperation);
+        scenesActivated.Add(scene, false);
     }
 
     public void ActivateScene(Scenes scene)

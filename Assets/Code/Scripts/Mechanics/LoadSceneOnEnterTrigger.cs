@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadSceneOnEnterTrigger : MonoBehaviour
 {
@@ -16,6 +18,22 @@ public class LoadSceneOnEnterTrigger : MonoBehaviour
         if (!ScenePreloadManager.Instance.IsScenePreloaded(sceneToLoad))
         {
             ScenePreloadManager.Instance.PreloadScene(sceneToLoad);
+        }
+
+        // Obtém o nome ou o índice da cena atual
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // Converte o nome da cena para o tipo Scenes
+        Scenes currentScene;
+        if (Enum.TryParse(currentSceneName, out currentScene))
+        {
+            // Usa a instância singleton para chamar o método
+            bool isActivated = ScenePreloadManager.Instance.IsSceneActivated(currentScene);
+            Debug.Log("Cena atual ativada: " + isActivated);
+        }
+        else
+        {
+            Debug.LogWarning("A cena atual não corresponde a nenhum valor definido na enumeração Scenes.");
         }
     }
 
