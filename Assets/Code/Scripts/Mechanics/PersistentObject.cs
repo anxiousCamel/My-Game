@@ -1,21 +1,23 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PersistentObject : MonoBehaviour
 {
-    private PersistentObject instance;
+    private static List<string> existingObjects = new List<string>();
+
+    // Esta lista será mostrada no Inspector como uma cópia da lista estática
+    [SerializeField] private List<string> debugExistingObjects = new List<string>();
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            // Se não existe outra instância, esta se torna a única e não é destruída
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            // Se já existe uma instância, destrua a duplicata
-            Destroy(gameObject);
-        }
+        // Atualiza a lista no Inspector para exibição
+        UpdateInspectorList();
+    }
+
+    // Atualiza a lista que é exibida no Inspector
+    private void UpdateInspectorList()
+    {
+        debugExistingObjects.Clear();
+        debugExistingObjects.AddRange(existingObjects);
     }
 }

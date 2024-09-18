@@ -867,6 +867,18 @@ PrefabInstance:
       propertyPath: playerLayer.m_Bits
       value: 1024
       objectReference: {fileID: 0}
+    - target: {fileID: 6999601944139593908, guid: 1b9214876ecd50940ae46fded5efbdd6, type: 3}
+      propertyPath: scenesToPreload.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999601944139593908, guid: 1b9214876ecd50940ae46fded5efbdd6, type: 3}
+      propertyPath: scenesToPreload.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999601944139593908, guid: 1b9214876ecd50940ae46fded5efbdd6, type: 3}
+      propertyPath: scenesToPreload.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7035916192112519268, guid: 1b9214876ecd50940ae46fded5efbdd6, type: 3}
       propertyPath: m_Size.x
       value: 0.12971878
