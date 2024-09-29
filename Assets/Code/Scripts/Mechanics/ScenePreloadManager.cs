@@ -37,6 +37,7 @@ public class ScenePreloadManager : MonoBehaviour
             if (!scenesActivated.ContainsKey(sceneEnum))
             {
                 scenesActivated[sceneEnum] = true;
+                GameManager.OnSceneLoaded(currentScene, LoadSceneMode.Single); // Processa a cena ativa
             }
         }
     }
@@ -45,12 +46,9 @@ public class ScenePreloadManager : MonoBehaviour
     {
         // Verifica se a cena já está carregada ou pré-carregada
         if (SceneManager.GetSceneByBuildIndex((int)scene).isLoaded || preloadedScenes.ContainsKey(scene))
-        {
-            Debug.Log("Cena já está carregada ou pré-carregada: " + scene);
+        { 
             return;
         }
-
-        Debug.Log("Pré-carregando cena: " + scene);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive);
         asyncOperation.allowSceneActivation = false;
         preloadedScenes.Add(scene, asyncOperation);
@@ -66,23 +64,18 @@ public class ScenePreloadManager : MonoBehaviour
                 AsyncOperation asyncOperation = preloadedScenes[scene];
                 if (asyncOperation.progress >= 0.9f)
                 {
-                    Debug.Log("Ativando cena: " + scene);
                     asyncOperation.allowSceneActivation = true;
                     scenesActivated[scene] = true;
-                }
-                else
-                {
-                    Debug.LogWarning("A cena não está pronta para ativação: " + scene + " (Progresso: " + asyncOperation.progress + ")");
+
+                    // Converte a enum Scenes para uma Scene real usando o nome da cena
+                    string sceneName = scene.ToString();
+                    Scene unityScene = SceneManager.GetSceneByName(sceneName);
+
+                    // Adiciona Confinners e Tilemaps à lista
+                    GameManager.AddConfinnersToList(unityScene);
+                    GameManager.AddTilemapsToList(unityScene);
                 }
             }
-            else
-            {
-                Debug.LogWarning("A cena já está ativada: " + scene);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("A cena não foi pré-carregada: " + scene);
         }
     }
 

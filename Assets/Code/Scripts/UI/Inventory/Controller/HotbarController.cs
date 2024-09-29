@@ -160,7 +160,6 @@ namespace Inventory.UI
             if (IsCarryingObject())
             {
                 PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item caso esteja carregando algo
-                print(3);
             }
         }
 
@@ -185,11 +184,9 @@ namespace Inventory.UI
             if (PlayerMechanics.Carry.identifiedTile == null)
             {
                 PlayerMechanics.CleanObject(); // Limpa o objeto carregado
-                print(0);
             }
 
             PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item na hotbar
-            print(1);
         }
 
         /// <summary>
@@ -245,7 +242,6 @@ namespace Inventory.UI
             else
             {
                 PlayerMechanics.ClearItemPickUp(); // Limpa a seleção de item
-                print(2);
             }
         }
 

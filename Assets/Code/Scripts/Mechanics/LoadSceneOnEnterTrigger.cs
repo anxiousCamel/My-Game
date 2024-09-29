@@ -9,7 +9,6 @@ public class LoadSceneOnEnterTrigger : MonoBehaviour
     public Scenes sceneToLoad;
     public LayerMask playerLayer;
     private BoxCollider2D col;
-
     void Start()
     {
         col = GetComponent<BoxCollider2D>();
@@ -29,11 +28,6 @@ public class LoadSceneOnEnterTrigger : MonoBehaviour
         {
             // Usa a instância singleton para chamar o método
             bool isActivated = ScenePreloadManager.Instance.IsSceneActivated(currentScene);
-            Debug.Log("Cena atual ativada: " + isActivated);
-        }
-        else
-        {
-            Debug.LogWarning("A cena atual não corresponde a nenhum valor definido na enumeração Scenes.");
         }
     }
 
@@ -41,7 +35,6 @@ public class LoadSceneOnEnterTrigger : MonoBehaviour
     {
         if (IsPlayerLayer(other.gameObject))
         {
-            Debug.Log("Jogador entrou no trigger. Ativando cena: " + sceneToLoad);
             if (!ScenePreloadManager.Instance.IsSceneActivated(sceneToLoad))
             {
                 ScenePreloadManager.Instance.ActivateScene(sceneToLoad);

@@ -7,7 +7,7 @@ public class CenaryObjects : MonoBehaviour
 {
     [field: SerializeField]
     public ItemSO InventoryItem { get; private set; }
-    [ReadOnly] public IdentifyTile identifyTile;
+    [ReadOnly] public static IdentifyTile identifyTile;
     [ReadOnly] public BoxCollider2D col;
     [ReadOnly] public Animator anim;
 
@@ -28,11 +28,6 @@ public class CenaryObjects : MonoBehaviour
     {
         col = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
-
-        if (identifyTile == null)
-        {
-            identifyTile = IdentifyTileCache.GetIdentifyTile();
-        }
     }
 
     void Update()

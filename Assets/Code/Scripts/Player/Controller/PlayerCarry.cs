@@ -26,7 +26,6 @@ public class PlayerCarry : MonoBehaviour
 
     private void Update()
     {
-
         #region Interaction throw or place Cooldown
         Mechanics.Throw.lastInteraction += 0.01f;
         Mechanics.Throw.lastInteractionPlaceOrThrow += 0.01f;
@@ -98,7 +97,7 @@ public class PlayerCarry : MonoBehaviour
                 Mechanics.Throw.lastInteractionPlaceOrThrow = 0;
 
                 // Descontar
-                if(Mechanics.Carry.blockOfHotBar)
+                if (Mechanics.Carry.blockOfHotBar)
                 {
                     if (Mechanics.GetSelectedItem().item.IsPlaceable)
                     {

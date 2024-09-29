@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3027477947980081654}
   - component: {fileID: 2167607973281464211}
-  - component: {fileID: 1441685691626601785}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Grid
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,20 +45,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &1441685691626601785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3069531012081658692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02f8278223f2bd045a3dc18255fa28ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileMaps:
-  - {fileID: 7777115204050729490}
 --- !u!1 &4808176604136828304
 GameObject:
   m_ObjectHideFlags: 0

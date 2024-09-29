@@ -341,5 +341,24 @@ public class PlayerData_Mechanics : MonoBehaviour
     #endregion
 
 
+    #region Tilemap TO place
+
+    public Tilemap FindTilemapAtPosition(Vector3 position)
+    {
+        foreach (Tilemap tilemap in Tile.tileMaps)
+        {
+            // Verifica se a posição está dentro dos limites do Tilemap
+            BoundsInt bounds = tilemap.cellBounds;
+            if (bounds.Contains(tilemap.WorldToCell(position)))
+            {
+                return tilemap; // Retorna o Tilemap correto
+            }
+        }
+        return null; // Retorna null se nenhum Tilemap foi encontrado
+    }
+
+    #endregion
+
+
 }
 

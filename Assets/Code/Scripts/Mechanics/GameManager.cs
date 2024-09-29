@@ -1,7 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using Inventory;
 using Inventory.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,26 +20,40 @@ public class GameManager : MonoBehaviour
     public GameObject hotBarObject;
     [ReadOnly] public string TagHotBar = "HotBar";
 
-
     [Header("Inventory Controller")]
     public GameObject inventoryControllerObject;
     [ReadOnly] public string TagInventoryController = "Canvas";
 
-
+    [Header("All Scenes")]
+    [SerializeField] private List<GameObject> inspectorConfinners;
+    [SerializeField] private List<GameObject> inspectorTilemaps;
 
     // Variáveis estáticas
+    public static List<GameObject> Confinners = new List<GameObject>();
+    public static List<GameObject> Tilemaps = new List<GameObject>();
     public static GameObject player;
     public static GameObject grid;
     public static GameObject hotBar;
     public static GameObject inventoryController;
 
-
     private void Start()
     {
+        // Registra o método OnSceneLoaded como ouvinte do evento sceneLoaded
+        SceneManager.sceneLoaded += OnSceneLoaded;
         StartCoroutine(ExecuteRoutine());
     }
 
+    private void OnDestroy()
+    {
+        // Remove o método OnSceneLoaded do evento sceneLoaded ao destruir o objeto
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
+    private void Update()
+    {
+        inspectorConfinners = new List<GameObject>(Confinners);
+        inspectorTilemaps = new List<GameObject>(Tilemaps);
+    }
 
     IEnumerator ExecuteRoutine()
     {
@@ -48,12 +65,10 @@ public class GameManager : MonoBehaviour
         hotBar = AssignObject(hotBar, hotBarObject, TagHotBar);
         inventoryController = AssignObject(inventoryController, inventoryControllerObject, TagInventoryController);
 
-
         playerObject = player;
         gridObject = grid;
         hotBarObject = hotBar;
         inventoryControllerObject = inventoryController;
-
 
         player.GetComponent<PlayerData_Mechanics>().Tile = grid.GetComponent<IdentifyTile>();
         player.GetComponent<PlayerData_Mechanics>().hotbarController = hotBar.GetComponent<HotbarController>();
@@ -63,21 +78,12 @@ public class GameManager : MonoBehaviour
         player.GetComponentInChildren<PreviewCheck>().IdentifyTile = grid.GetComponent<IdentifyTile>();
         player.GetComponent<PlayerUseItem>().inventoryController = inventoryController.GetComponent<InventoryController>();
 
-
         var gridTilemap = FindChildWithTagAndLayer(grid, "Downloadable", LayerMask.NameToLayer("Ground"));
         player.GetComponent<PlayerData_Mechanics>().ToPlace.Tilemap = gridTilemap;
+
+        CenaryObjects.identifyTile = grid.GetComponent<IdentifyTile>();
     }
 
-    /// <summary>
-    /// Método genérico para atribuir um GameObject estático.
-    /// Primeiro, verifica se o objeto estático já foi atribuído.
-    /// Se não, tenta usar o objeto atribuído no Inspector. 
-    /// Caso o objeto do Inspector seja nulo, ele busca o objeto pela tag.
-    /// </summary>
-    /// <param name="staticObject">O GameObject estático que será atribuído, como player ou canvas.</param>
-    /// <param name="inspectorObject">O GameObject configurado manualmente no Inspector.</param>
-    /// <param name="tag">A tag associada ao objeto a ser encontrado caso o objeto do Inspector seja nulo.</param>
-    /// <returns>O GameObject final a ser usado, seja ele do Inspector ou encontrado pela tag.</returns>
     public static GameObject AssignObject(GameObject staticObject, GameObject inspectorObject, string tag)
     {
         if (staticObject == null)
@@ -88,18 +94,12 @@ public class GameManager : MonoBehaviour
         return staticObject;
     }
 
-    /// <summary>
-    /// Busca um GameObject na cena com base na tag fornecida.
-    /// Utiliza o método GameObject.FindWithTag para localizar o objeto.
-    /// </summary>
-    /// <param name="tag">A tag do GameObject que será buscado.</param>
-    /// <returns>O GameObject encontrado com a tag correspondente, ou null se nenhum objeto com a tag for encontrado.</returns>
     public static GameObject GetObject(string tag)
     {
         return GameObject.FindWithTag(tag);
     }
 
-     private GameObject FindChildWithTagAndLayer(GameObject parent, string tag, int layer)
+    private GameObject FindChildWithTagAndLayer(GameObject parent, string tag, int layer)
     {
         foreach (Transform child in parent.transform)
         {
@@ -110,4 +110,59 @@ public class GameManager : MonoBehaviour
         }
         return null;
     }
+
+    // Método chamado quando a cena é carregada
+    public static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AddConfinnersToList(scene);
+        AddTilemapsToList(scene);
+    }
+
+    public static void AddConfinnersToList(Scene scene)
+    {
+        GameObject[] rootObjects = scene.GetRootGameObjects();
+        foreach (GameObject rootObject in rootObjects)
+        {
+            if (rootObject.CompareTag("Confiner"))
+            {
+                Confinners.Add(rootObject);
+            }
+        }
+
+        Debug.Log("Confinners encontrados na cena " + scene.name + ": " + Confinners.Count);
+    }
+public static void AddTilemapsToList(Scene scene)
+{
+    GameObject[] rootObjects = scene.GetRootGameObjects(); // Pega todos os GameObjects da cena especificada
+    
+    foreach (GameObject rootObject in rootObjects)
+    {
+        // Primeiro, buscamos objetos com a tag "EditorOnly"
+        if (rootObject.CompareTag("EditorOnly"))
+        {
+            // Agora, buscamos dentro do objeto com a tag "EditorOnly" por filhos com a tag "Downloadable"
+            AddTilemapsFromEditorOnly(rootObject);
+        }
+    }
+
+    Debug.Log("Tilemaps encontrados na cena " + scene.name + ": " + Tilemaps.Count);
+}
+
+// Método para buscar Tilemaps dentro de objetos com a tag "EditorOnly"
+private static void AddTilemapsFromEditorOnly(GameObject editorOnlyObject)
+{
+    // Percorre todos os filhos do objeto "EditorOnly"
+    foreach (Transform child in editorOnlyObject.transform)
+    {
+        // Verifica se o filho tem a tag "Downloadable"
+        if (child.CompareTag("Downloadable"))
+        {
+            Tilemap tilemap = child.GetComponent<Tilemap>();
+            if (tilemap != null)
+            {
+                Tilemaps.Add(child.gameObject); // Adiciona o GameObject à lista se o Tilemap for encontrado
+            }
+        }
+    }
+}
 }
