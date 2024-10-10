@@ -26,11 +26,10 @@ public class GameManager : MonoBehaviour
 
     [Header("All Scenes")]
     [SerializeField] private List<GameObject> inspectorConfinners;
-    [SerializeField] private List<GameObject> inspectorTilemaps;
 
     // Variáveis estáticas
     public static List<GameObject> Confinners = new List<GameObject>();
-    public static List<GameObject> Tilemaps = new List<GameObject>();
+    public static List<Tilemap> Tilemaps = new List<Tilemap>();  // Lista de Tilemaps
     public static GameObject player;
     public static GameObject grid;
     public static GameObject hotBar;
@@ -51,14 +50,32 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        inspectorConfinners = new List<GameObject>(Confinners);
-        inspectorTilemaps = new List<GameObject>(Tilemaps);
+        Vector3 playerPosition = player.transform.position;
+
+        // Verifica o melhor Confiner com o qual o player está colidindo
+
+        GameObject bestConfiner = GetConfinerContainingPlayer(playerPosition);
+        if (bestConfiner != null)
+        {
+            player.GetComponent<PlayerData_Mechanics>().GameManager.confiner = bestConfiner;
+
+
+            Scene confinerScene = bestConfiner.scene;
+
+            // Procura o tilemap na cena do confiner
+            GameObject currentTilemap = GetTilemapInConfinerScene(confinerScene);
+
+            if (currentTilemap != null)
+            {
+                player.GetComponent<PlayerData_Mechanics>().GameManager.Tilemap = currentTilemap;
+            }
+        }
+
     }
 
     IEnumerator ExecuteRoutine()
     {
-        // Espera um frame para garantir que todos os objetos estejam inicializados
-        yield return null;
+        yield return null; // Espera um frame para garantir que todos os objetos estejam inicializados
 
         player = AssignObject(player, playerObject, TagPlayer);
         grid = AssignObject(grid, gridObject, TagGrid);
@@ -70,6 +87,7 @@ public class GameManager : MonoBehaviour
         hotBarObject = hotBar;
         inventoryControllerObject = inventoryController;
 
+        // Inicializa os componentes e referencias necessários
         player.GetComponent<PlayerData_Mechanics>().Tile = grid.GetComponent<IdentifyTile>();
         player.GetComponent<PlayerData_Mechanics>().hotbarController = hotBar.GetComponent<HotbarController>();
         hotBar.GetComponent<HotbarController>().PlayerMechanics = player.GetComponent<PlayerData_Mechanics>();
@@ -77,11 +95,6 @@ public class GameManager : MonoBehaviour
 
         player.GetComponentInChildren<PreviewCheck>().IdentifyTile = grid.GetComponent<IdentifyTile>();
         player.GetComponent<PlayerUseItem>().inventoryController = inventoryController.GetComponent<InventoryController>();
-
-        var gridTilemap = FindChildWithTagAndLayer(grid, "Downloadable", LayerMask.NameToLayer("Ground"));
-        player.GetComponent<PlayerData_Mechanics>().ToPlace.Tilemap = gridTilemap;
-
-        CenaryObjects.identifyTile = grid.GetComponent<IdentifyTile>();
     }
 
     public static GameObject AssignObject(GameObject staticObject, GameObject inspectorObject, string tag)
@@ -99,25 +112,56 @@ public class GameManager : MonoBehaviour
         return GameObject.FindWithTag(tag);
     }
 
-    private GameObject FindChildWithTagAndLayer(GameObject parent, string tag, int layer)
+    // Função para detectar o melhor Confiner baseado no PolygonCollider2D
+    public GameObject GetConfinerContainingPlayer(Vector3 playerPosition)
     {
-        foreach (Transform child in parent.transform)
+        foreach (GameObject confiner in Confinners)
         {
-            if (child.CompareTag(tag) && child.gameObject.layer == layer)
+            PolygonCollider2D polygonCollider = confiner.GetComponent<PolygonCollider2D>();
+            if (polygonCollider != null && polygonCollider.OverlapPoint(playerPosition))
             {
-                return child.gameObject;
+                return confiner; // Retorna o confiner que contém o player
             }
         }
-        return null;
+        return null; // Retorna null se nenhum confiner envolver o player
     }
 
-    // Método chamado quando a cena é carregada
+    // Função para encontrar o Tilemap na cena do Confiner
+    public GameObject GetTilemapInConfinerScene(Scene confinerScene)
+    {
+        // Obtém os objetos raiz da cena do confiner
+        GameObject[] rootObjects = confinerScene.GetRootGameObjects();
+
+        foreach (GameObject rootObject in rootObjects)
+        {
+            // Procura o objeto com a tag "EditorOnly"
+            if (rootObject.CompareTag("EditorOnly"))
+            {
+                // Dentro do objeto com a tag "EditorOnly", procurar o objeto com a tag "Downloadable"
+                foreach (Transform child in rootObject.transform)
+                {
+                    if (child.CompareTag("Downloadable"))
+                    {
+                        Tilemap tilemap = child.GetComponent<Tilemap>();
+                        if (tilemap != null)
+                        {
+                            return child.gameObject; // Retorna o objeto com o Tilemap
+                        }
+                    }
+                }
+            }
+        }
+
+        return null; // Retorna null se nenhum Tilemap for encontrado
+    }
+
+    // Método chamado quando uma nova cena é carregada
     public static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         AddConfinnersToList(scene);
-        AddTilemapsToList(scene);
     }
 
+    // Adiciona Confinners da cena atual à lista
     public static void AddConfinnersToList(Scene scene)
     {
         GameObject[] rootObjects = scene.GetRootGameObjects();
@@ -128,41 +172,20 @@ public class GameManager : MonoBehaviour
                 Confinners.Add(rootObject);
             }
         }
-
-        Debug.Log("Confinners encontrados na cena " + scene.name + ": " + Confinners.Count);
-    }
-public static void AddTilemapsToList(Scene scene)
-{
-    GameObject[] rootObjects = scene.GetRootGameObjects(); // Pega todos os GameObjects da cena especificada
-    
-    foreach (GameObject rootObject in rootObjects)
-    {
-        // Primeiro, buscamos objetos com a tag "EditorOnly"
-        if (rootObject.CompareTag("EditorOnly"))
-        {
-            // Agora, buscamos dentro do objeto com a tag "EditorOnly" por filhos com a tag "Downloadable"
-            AddTilemapsFromEditorOnly(rootObject);
-        }
     }
 
-    Debug.Log("Tilemaps encontrados na cena " + scene.name + ": " + Tilemaps.Count);
-}
-
-// Método para buscar Tilemaps dentro de objetos com a tag "EditorOnly"
-private static void AddTilemapsFromEditorOnly(GameObject editorOnlyObject)
-{
-    // Percorre todos os filhos do objeto "EditorOnly"
-    foreach (Transform child in editorOnlyObject.transform)
+    // Método para adicionar Tilemaps da cena à lista
+    public static void AddTilemapsToList(Scene scene)
     {
-        // Verifica se o filho tem a tag "Downloadable"
-        if (child.CompareTag("Downloadable"))
+        GameObject[] rootObjects = scene.GetRootGameObjects();
+        foreach (GameObject rootObject in rootObjects)
         {
-            Tilemap tilemap = child.GetComponent<Tilemap>();
-            if (tilemap != null)
+            // Encontra todos os Tilemaps na cena
+            Tilemap[] tilemaps = rootObject.GetComponentsInChildren<Tilemap>();
+            foreach (Tilemap tilemap in tilemaps)
             {
-                Tilemaps.Add(child.gameObject); // Adiciona o GameObject à lista se o Tilemap for encontrado
+                Tilemaps.Add(tilemap); // Adiciona cada Tilemap à lista
             }
         }
     }
-}
 }

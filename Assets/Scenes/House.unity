@@ -5339,7 +5339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3069531012081658692, guid: affeca32623597c4ea013622fe927124, type: 3}
       propertyPath: m_Name
-      value: Grid (1)
+      value: 'Grid '
       objectReference: {fileID: 0}
     - target: {fileID: 3069531012081658692, guid: affeca32623597c4ea013622fe927124, type: 3}
       propertyPath: m_IsActive
@@ -5347,7 +5347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3069531012081658692, guid: affeca32623597c4ea013622fe927124, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: EditorOnly
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1441685691626601785, guid: affeca32623597c4ea013622fe927124, type: 3}
@@ -15353,10 +15353,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 7.8465405, y: 1.5627404}
-      - {x: -11.249484, y: 1.489054}
-      - {x: -11.221341, y: -3.0264544}
-      - {x: 7.9344378, y: -3.0751035}
+    - - {x: 3.6420221, y: 1.299958}
+      - {x: -5.293084, y: 1.3138657}
+      - {x: -6.447461, y: -3.1140485}
+      - {x: 3.5109339, y: -2.9875095}
   m_UseDelaunayMesh: 0
 --- !u!4 &1420490656
 Transform:
@@ -15405,7 +15405,6 @@ GameObject:
   - component: {fileID: 1443675687}
   - component: {fileID: 1443675689}
   - component: {fileID: 1443675693}
-  - component: {fileID: 1443675686}
   - component: {fileID: 1443675690}
   - component: {fileID: 1443675691}
   - component: {fileID: 1443675699}
@@ -15833,6 +15832,9 @@ MonoBehaviour:
     particleDestroyHolderItem: {fileID: 1789746095}
     isHurt: 0
     hurtForce: {x: 6, y: 6}
+  GameManager:
+    Tilemap: {fileID: 0}
+    confiner: {fileID: 0}
 --- !u!114 &1443675683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15843,18 +15845,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0759550800a0c74e85e29a363c98942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1443675686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443675651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834f3ad54c2a8314d979eff8f7ff0f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1443675687
@@ -21506,6 +21496,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1631828908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6794416169197798931, guid: d4552d597d07ecf46890011f1d07b7b1, type: 3}
+  m_PrefabInstance: {fileID: 3719789893107644337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1665941453 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3069531012081658692, guid: affeca32623597c4ea013622fe927124, type: 3}
@@ -26783,6 +26778,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2642219105782074908, guid: d4552d597d07ecf46890011f1d07b7b1, type: 3}
   m_PrefabInstance: {fileID: 3719789893107644337}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1811268550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631828908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b836f2eca316944eafcaa9e418e2831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1812303457
 GameObject:
   m_ObjectHideFlags: 0
@@ -36654,7 +36661,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2642219105782074908, guid: d4552d597d07ecf46890011f1d07b7b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1722634001}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6794416169197798931, guid: d4552d597d07ecf46890011f1d07b7b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1811268550}
   m_SourcePrefab: {fileID: 100100000, guid: d4552d597d07ecf46890011f1d07b7b1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
