@@ -24,7 +24,6 @@ public class PlayerData_Mechanics : MonoBehaviour
     [Space(5)] public target Target = new();
     [Space(5)] public time Time = new();
     [Space(5)] public hurt Hurt = new();
-    [Space(5)] public gameManager GameManager = new();
 
     [System.Serializable]
     public class toPlace
@@ -99,13 +98,6 @@ public class PlayerData_Mechanics : MonoBehaviour
         public ParticleSystem particleDestroyHolderItem;
         public bool isHurt;
         public Vector2 hurtForce;
-    }
-
-    [System.Serializable]
-    public class gameManager
-    {
-        public GameObject Tilemap;
-        public GameObject confiner;
     }
 
 

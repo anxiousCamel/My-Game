@@ -53,12 +53,25 @@ public class GameManager : MonoBehaviour
         Vector3 playerPosition = player.transform.position;
 
         // Verifica o melhor Confiner com o qual o player está colidindo
-
         GameObject bestConfiner = GetConfinerContainingPlayer(playerPosition);
         if (bestConfiner != null)
         {
-            player.GetComponent<PlayerData_Mechanics>().GameManager.confiner = bestConfiner;
-
+            Camera camera = GetComponentInChildren<Camera>();
+            if (camera != null)
+            {
+                // Obtém o componente do CinemachineConfiner
+                Cinemachine.CinemachineConfiner confiner = camera.GetComponentInChildren<Cinemachine.CinemachineConfiner>();
+                if (confiner != null)
+                {
+                    Collider2D confinerCollider = bestConfiner.GetComponent<Collider2D>();
+                    if (confinerCollider != null)
+                    {
+                        // Define o confiner para usar o Collider2D
+                        confiner.m_BoundingShape2D = confinerCollider; // Ajusta o Collider para definir os limites
+                        confiner.InvalidatePathCache(); // Força o Cinemachine a recalcular os limites
+                    }
+                }
+            }
 
             Scene confinerScene = bestConfiner.scene;
 
@@ -67,11 +80,11 @@ public class GameManager : MonoBehaviour
 
             if (currentTilemap != null)
             {
-                player.GetComponent<PlayerData_Mechanics>().GameManager.Tilemap = currentTilemap;
+                player.GetComponent<PlayerData_Mechanics>().ToPlace.Tilemap = currentTilemap;
             }
         }
-
     }
+
 
     IEnumerator ExecuteRoutine()
     {
